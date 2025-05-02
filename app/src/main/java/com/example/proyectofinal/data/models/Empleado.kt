@@ -3,9 +3,7 @@ package com.example.proyectofinal.data.models
 import java.io.Serializable
 
 data class Empleado(
-    val id: String = "",
-    val nombre: String = "",
-    val apellidos: String = "",
+    val nombreApellidos: String = "",
     val email: String = "",
     val telefono: String = "",
     val ciudad: String = "",

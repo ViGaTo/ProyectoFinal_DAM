@@ -2,6 +2,8 @@ package com.example.proyectofinal.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.SearchView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -39,8 +41,24 @@ class EmpleadoActivity : AppCompatActivity() {
             insets
         }
         database = FirebaseDatabase.getInstance().getReference("empleados")
+        viewModel.empleados.observe(this, { empleados ->
+            if (empleados.isNullOrEmpty()) {
+                binding.tvLista.visibility = View.VISIBLE // Muestra el TextView
+            } else {
+                binding.tvLista.visibility = View.GONE // Oculta el TextView
+            }
+            adapter.actualizarLista(empleados)
+        })
         auth = FirebaseAuth.getInstance()
         preferences = Preferences(this)
+        val menu = binding.menu.menu
+        val item = menu.findItem(R.id.item_usuarios)
+
+        item?.let {
+            it.isChecked = true
+            binding.menu.setCheckedItem(it.itemId)
+        }
+
         setListeners()
         setRecycler()
     }
@@ -80,15 +98,73 @@ class EmpleadoActivity : AppCompatActivity() {
         binding.btnPortal.setOnClickListener {
             finish()
         }
+
+        binding.btnActivo.setOnClickListener {
+            binding.searchView.setQuery("", false)
+            if(binding.btnActivo.text == "Inactivo"){
+                binding.btnActivo.text = "Activo"
+                binding.btnActivo.setBackgroundColor(resources.getColor(R.color.activo))
+                viewModel.getListaEmpleado("Inactivo")
+            } else {
+                binding.btnActivo.text = "Inactivo"
+                binding.btnActivo.setBackgroundColor(resources.getColor(R.color.inactivo))
+                viewModel.getListaEmpleado("Activo")
+            }
+        }
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    if(binding.btnActivo.text == "Inactivo"){
+                        viewModel.getListaEmpleadoBuscador(query, "Activo")
+                    } else {
+                        viewModel.getListaEmpleadoBuscador(query, "Inactivo")
+                    }
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    if(binding.btnActivo.text == "Inactivo"){
+                        viewModel.getListaEmpleadoBuscador(newText, "Activo")
+                    } else {
+                        viewModel.getListaEmpleadoBuscador(newText, "Inactivo")
+                    }
+                }
+                return false
+            }
+        })
+
+        binding.menu.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.item_inicio -> {
+                    startActivity(Intent(this, PortalActivity::class.java))
+                    true
+                }
+                R.id.item_usuarios -> {
+                    startActivity(Intent(this, UsuarioActivity::class.java))
+                    true
+                }
+                R.id.item_empleados -> {
+                    startActivity(Intent(this, EmpleadoActivity::class.java))
+                    true
+                }
+                R.id.item_salir -> {
+                    auth.signOut()
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun irFormularioActivity(bundle: Bundle?=null) {
-        val intent = Intent(this, EmpleadoActivity::class.java)
+        val intent = Intent(this, FormularioEmpleadoActivity::class.java)
         if (bundle != null) {
             intent.putExtras(bundle)
         }
         startActivity(intent)
     }
-
-
 }

@@ -1,0 +1,84 @@
+<resources>
+    <string name="app_name">ProyectoFinal</string>
+
+    <string name="hint_email">Introduzca su email...</string>
+    <string name="hint_password">Introduzca su contraseña...</string>
+    <string name="btn_login">Iniciar sesión</string>
+    <string name="tv_autor">Hecho por Victoriano García Torrecillas (ViGaTo)</string>
+
+    <string name="btn_portal">Volver al portal</string>
+
+    <string name="btn_admin_usuario">Usuario</string>
+    <string name="btn_admin_administrador">Administrador</string>
+
+    <string name="tv_usuario_viewmodel">Usuarios</string>
+    <string name="hint_usuario">Usuario a introducir...</string>
+
+    <string name="admin">Admin</string>
+    <string name="usuario">User</string>
+
+    <string name="activo">Activo</string>
+    <string name="inactivo">Inactivo</string>
+
+    <string name="tv_empleados">Empleados</string>
+    <string name="tv_lista">No hay empleados registrados en el sistema</string>
+
+    <string-array name="tipos">
+        <item>Seleccione un tipo...</item>
+        <item>Informático</item>
+        <item>Gestión</item>
+        <item>Administrativo</item>
+        <item>Comercial</item>
+        <item>Logística</item>
+    </string-array>
+
+
+    <string name="tv_titulo_empleado">Nuevo Empleado</string>
+    <string name="tv_titulo_empleado_editar">Editar Empleado</string>
+    <string name="tv_titulo_empleado_info">Información Empleado</string>
+    <string name="hint_nombre_empleado">Nombre y apellidos...</string>
+    <string name="hint_apellido_empleado">Apellidos...</string>
+    <string name="hint_telefono_empleado">Teléfono...</string>
+    <string name="hint_email_empleado">Email...</string>
+    <string name="hint_ciudad_empleado">Ciudad...</string>
+    <string name="hint_fecha_empleado">F. Nacimiento...</string>
+    <string name="hint_estado_empleado">Estado...</string>
+    <string name="hint_puesto_empleado">Puesto...</string>
+    <string name="hint_salario_empleado">Salario...</string>
+    <string name="hint_fecha_contratacion_empleado">F. Alta...</string>
+    <string name="hint_fecha_baja_empleado">F. Baja...</string>
+    <string name="hint_notas_empleado">Notas adicionales</string>
+    <string name="cb_estado_empleado">Activo</string>
+
+    <string name="tv_proveedor">Proveedores</string>
+    <string name="tv_lista_proveedor">No hay proveedores registrados en el sistema</string>
+    <string name="tv_titulo_proveedor">Nuevo Proveedor</string>
+    <string name="tv_titulo_proveedor_editar">Editar Proveedor</string>
+    <string name="tv_titulo_proveedor_info">Información Proveedor</string>
+    <string name="hint_nombre_proveedor">Nombre...</string>
+    <string name="hint_email_proveedor">Email...</string>
+    <string name="hint_telefono_proveedor">Teléfono...</string>
+    <string name="hint_direccion_proveedor">Dirección...</string>
+    <string name="hint_ciudad_proveedor">Ciudad...</string>
+    <string name="hint_calificacion_proveedor">Calificación...</string>
+    <string name="hint_notas_proveedor">Notas adicionales</string>
+    <string name="cb_estado_proveedor">Activo</string>
+
+    <string name="tv_cliente">Clientes</string>
+    <string name="tv_lista_cliente">No hay clientes registrados en el sistema</string>
+    <string name="tv_titulo_cliente">Nuevo Cliente</string>
+    <string name="tv_titulo_cliente_editar">Editar Cliente</string>
+    <string name="tv_titulo_cliente_info">Información Cliente</string>
+    <string name="hint_nombre_cliente">Nombre y apellidos...</string>
+    <string name="hint_email_cliente">Email...</string>
+    <string name="hint_telefono_cliente">Teléfono...</string>
+    <string name="hint_direccion_cliente">Dirección...</string>
+    <string name="hint_ciudad_cliente">Ciudad...</string>
+    <string name="hint_frecuencia_cliente">Frecuencia...</string>
+    <string name="hint_notas_cliente">Notas adicionales</string>
+
+    <string name="btn_nuevo">Nuevo</string>
+    <string name="btn_volver">Volver</string>
+    <string name="btn_confirmar">Confirmar</string>
+    <string name="btn_cancelar">Cancelar</string>
+</resources>

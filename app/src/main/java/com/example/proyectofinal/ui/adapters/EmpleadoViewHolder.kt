@@ -10,7 +10,7 @@ class EmpleadoViewHolder(v: View) : RecyclerView.ViewHolder(v) {
 
     fun render(empleado: Empleado, deleteEmpleado: (Empleado) -> Unit, updateEmpleado: (Empleado) -> Unit, infoEmpleado: (Empleado) -> Unit
     ) {
-        binding.tvNombre.text = empleado.nombre + " (${empleado.apellidos})"
+        binding.tvNombre.text = empleado.nombreApellidos
         binding.tvEmail.text = empleado.email
 
         binding.btnDelete.setOnClickListener {

@@ -12,7 +12,19 @@ class ListaEmpleadoViewModel: ViewModel() {
 
     val empleados: LiveData<List<Empleado>> = _empleados
     init {
-        repository.getListaEmpleado { lista ->
+        repository.getListaEmpleado("Activo") { lista ->
+            _empleados.postValue(lista)
+        }
+    }
+
+    fun getListaEmpleadoBuscador(busqueda: String, estado: String) {
+        repository.getListaEmpleadoBuscador(busqueda, estado) { lista ->
+            _empleados.postValue(lista)
+        }
+    }
+
+    fun getListaEmpleado(estado: String) {
+        repository.getListaEmpleado(estado) { lista ->
             _empleados.postValue(lista)
         }
     }

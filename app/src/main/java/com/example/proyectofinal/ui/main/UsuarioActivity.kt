@@ -78,6 +78,10 @@ class UsuarioActivity : AppCompatActivity() {
                     startActivity(Intent(this, UsuarioActivity::class.java))
                     true
                 }
+                R.id.item_empleados -> {
+                    startActivity(Intent(this, EmpleadoActivity::class.java))
+                    true
+                }
                 R.id.item_salir -> {
                     auth.signOut()
                     finish()
