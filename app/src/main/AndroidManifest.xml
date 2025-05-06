@@ -13,6 +13,27 @@
         android:theme="@style/Theme.ProyectoFinal"
         tools:targetApi="31">
         <activity
+            android:name=".ui.main.ProductoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.main.InfoClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.main.InfoProveedorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.main.FormularioClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.main.FormularioProveedorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.main.ClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.main.ProveedorActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.main.FormularioEmpleadoActivity"
             android:exported="false" />
         <activity

@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+    implementation("me.zhanghai.android.materialratingbar:library:1.4.0")
     implementation(libs.retrofit)
     implementation(libs.picasso)
     implementation(libs.converter.gson)

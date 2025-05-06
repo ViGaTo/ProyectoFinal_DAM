@@ -9,6 +9,6 @@ data class Proveedor(
     val direccion: String = "",
     val ciudad: String = "",
     val estado: String = "",
-    val calificacion: Int = 0,
+    val calificacion: Float = 0f,
     val notas: String = ""
 ): Serializable

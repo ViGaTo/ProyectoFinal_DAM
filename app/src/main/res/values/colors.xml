@@ -13,4 +13,11 @@
 
     <color name="activo">#FFEB3B</color>
     <color name="inactivo">#3F51B5</color>
+
+    <color name="fondo_inactivo">#E494A4</color>
+
+    <color name="fondo_semanal">#D1CAA1</color>
+    <color name="fondo_mensual">#C5B394</color>
+    <color name="fondo_anual">#B89791</color>
+    <color name="fondo_nuevo">#D59292</color>
 </resources>

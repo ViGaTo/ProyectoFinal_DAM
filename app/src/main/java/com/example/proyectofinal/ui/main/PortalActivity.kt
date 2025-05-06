@@ -58,6 +58,14 @@ class PortalActivity : AppCompatActivity() {
                     startActivity(Intent(this, EmpleadoActivity::class.java))
                     true
                 }
+                R.id.item_clientes -> {
+                    startActivity(Intent(this, ClienteActivity::class.java))
+                    true
+                }
+                R.id.item_proveedores -> {
+                    startActivity(Intent(this, ProveedorActivity::class.java))
+                    true
+                }
                 R.id.item_salir -> {
                     auth.signOut()
                     finish()

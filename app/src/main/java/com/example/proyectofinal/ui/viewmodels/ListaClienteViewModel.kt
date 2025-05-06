@@ -1,10 +1,11 @@
 package com.example.proyectofinal.ui.viewmodels
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.proyectofinal.data.models.Cliente
 import com.example.proyectofinal.data.providers.repository.ListaClienteRepository
 
-class ListaClienteViewModel {
+class ListaClienteViewModel: ViewModel() {
     val repository = ListaClienteRepository()
     val _clientes = MutableLiveData<List<Cliente>>()
 

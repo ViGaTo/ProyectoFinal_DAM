@@ -219,7 +219,7 @@ class FormularioEmpleadoActivity : AppCompatActivity() {
         notas = binding.etNotas.text.toString().trim()
 
         if(nombre.length < 9) {
-           binding.tlNombre.error = "ERROR. El nombre completo debe tener al menos 9 caracteres."
+           binding.tlNombre.error = "ERROR. El nombre completo debe tener al menos nueve caracteres."
             return false
         }
 
@@ -229,7 +229,7 @@ class FormularioEmpleadoActivity : AppCompatActivity() {
         }
 
         if(telefono.length < 9) {
-            binding.tlTelefono.error = "ERROR. El teléfono debe tener al menos 9 digitos."
+            binding.tlTelefono.error = "ERROR. El teléfono debe tener al menos nueve digitos."
             return false
         }
 

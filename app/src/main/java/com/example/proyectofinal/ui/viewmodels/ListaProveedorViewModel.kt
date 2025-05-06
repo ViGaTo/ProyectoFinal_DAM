@@ -1,10 +1,11 @@
 package com.example.proyectofinal.ui.viewmodels
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.proyectofinal.data.models.Proveedor
 import com.example.proyectofinal.data.providers.repository.ListaProveedorRepository
 
-class ListaProveedorViewModel {
+class ListaProveedorViewModel: ViewModel() {
     private val repository = ListaProveedorRepository()
     private val _proveedores = MutableLiveData<List<Proveedor>>()
 

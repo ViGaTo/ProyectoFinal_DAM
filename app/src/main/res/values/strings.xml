@@ -24,7 +24,6 @@
     <string name="tv_lista">No hay empleados registrados en el sistema</string>
 
     <string-array name="tipos">
-        <item>Seleccione un tipo...</item>
         <item>Informático</item>
         <item>Gestión</item>
         <item>Administrativo</item>
@@ -60,7 +59,7 @@
     <string name="hint_telefono_proveedor">Teléfono...</string>
     <string name="hint_direccion_proveedor">Dirección...</string>
     <string name="hint_ciudad_proveedor">Ciudad...</string>
-    <string name="hint_calificacion_proveedor">Calificación...</string>
+    <string name="hint_calificacion_proveedor">Calificación</string>
     <string name="hint_notas_proveedor">Notas adicionales</string>
     <string name="cb_estado_proveedor">Activo</string>
 
@@ -69,13 +68,22 @@
     <string name="tv_titulo_cliente">Nuevo Cliente</string>
     <string name="tv_titulo_cliente_editar">Editar Cliente</string>
     <string name="tv_titulo_cliente_info">Información Cliente</string>
-    <string name="hint_nombre_cliente">Nombre y apellidos...</string>
+    <string name="hint_nombre_cliente">Nombre...</string>
     <string name="hint_email_cliente">Email...</string>
     <string name="hint_telefono_cliente">Teléfono...</string>
     <string name="hint_direccion_cliente">Dirección...</string>
     <string name="hint_ciudad_cliente">Ciudad...</string>
     <string name="hint_frecuencia_cliente">Frecuencia...</string>
     <string name="hint_notas_cliente">Notas adicionales</string>
+
+    <string-array name="frecuencia">
+        <item>Semanal</item>
+        <item>Mensual</item>
+        <item>Anual</item>
+    </string-array>
+
+    <string name="tv_producto">Productos</string>
+    <string name="tv_lista_producto">No hay productos registrados en el sistema</string>
 
     <string name="btn_nuevo">Nuevo</string>
     <string name="btn_volver">Volver</string>
