@@ -55,8 +55,28 @@ class ListaProductoRepository {
         })
     }
 
+    fun addProducto(producto: Producto) {
+        database.child(producto.id.toString()).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (!snapshot.exists()) {
+                    database.child(producto.id.toString()).setValue(producto)
+                        .addOnCompleteListener {
+                            System.out.println("Producto añadido")
+                        }
+                        .addOnFailureListener {
+                            System.out.println("Error al añadir producto")
+                        }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                System.out.println("Error al leer realtime: ${error.message}")
+            }
+        })
+    }
+
     fun deleteProducto(producto: Producto) {
-        database.child(producto.titulo).removeValue()
+        database.child(producto.id.toString()).removeValue()
             .addOnCompleteListener {
                 System.out.println("Producto eliminado")
             }

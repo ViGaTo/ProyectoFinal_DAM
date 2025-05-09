@@ -20,4 +20,10 @@
     <color name="fondo_mensual">#C5B394</color>
     <color name="fondo_anual">#B89791</color>
     <color name="fondo_nuevo">#D59292</color>
+
+    <color name="color_ropa_hombre">#2196F3</color>
+    <color name="color_ropa_mujer">#FF4081</color>
+    <color name="joyeria">#8BC34A</color>
+    <color name="electronicos">#FFEB3B</color>
+    <color name="color_defecto">#FFFFFF</color>
 </resources>

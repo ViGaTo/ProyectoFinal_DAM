@@ -84,6 +84,14 @@
 
     <string name="tv_producto">Productos</string>
     <string name="tv_lista_producto">No hay productos registrados en el sistema</string>
+    <string name="tv_titulo_producto_editar">Editar Producto</string>
+    <string name="tv_titulo_producto_info">Información Producto</string>
+    <string name="hint_nombre_producto">Nombre...</string>
+    <string name="hint_categoria_producto">Categoría...</string>
+    <string name="hint_precio_producto">Precio...</string>
+    <string name="hint_cantidad_producto">Cantidad...</string>
+    <string name="hint_descripcion_producto">Descripción...</string>
+    <string name="btn_editar_producto">Editar</string>
 
     <string name="btn_nuevo">Nuevo</string>
     <string name="btn_volver">Volver</string>

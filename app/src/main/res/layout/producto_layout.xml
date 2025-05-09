@@ -23,7 +23,7 @@
             android:layout_marginTop="10dp"
             android:text="TextView"
             android:textAlignment="center"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -32,7 +32,7 @@
 
         <ImageView
             android:id="@+id/iv_producto"
-            android:layout_width="278dp"
+            android:layout_width="250dp"
             android:layout_height="190dp"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
@@ -42,31 +42,19 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/tv_descripcion"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="TextView"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_nombre" />
-
-        <TextView
             android:id="@+id/tv_cantidad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="100dp"
             android:layout_marginBottom="10dp"
             android:text="TextView"
             android:textAlignment="center"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_categoria"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_descripcion" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_nombre" />
 
         <TextView
             android:id="@+id/tv_categoria"
@@ -74,6 +62,7 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textAlignment="center"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_cantidad"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

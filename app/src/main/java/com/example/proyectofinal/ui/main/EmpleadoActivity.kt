@@ -158,8 +158,17 @@ class EmpleadoActivity : AppCompatActivity() {
                     startActivity(Intent(this, ProveedorActivity::class.java))
                     true
                 }
-                R.id.item_salir -> {
+                R.id.item_productos -> {
+                    startActivity(Intent(this, ProductoActivity::class.java))
+                    true
+                }
+                R.id.item_cerrar_sesion -> {
                     auth.signOut()
+                    preferences.limpiarPreferencias()
+                    startActivity(Intent(this, MainActivity::class.java))
+                    true
+                }
+                R.id.item_salir -> {
                     finish()
                     true
                 }

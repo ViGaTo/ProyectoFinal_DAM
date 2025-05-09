@@ -36,7 +36,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="@string/hint_nombre_empleado"
-            android:inputType="text"
             app:boxBackgroundMode="outline"
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,6 +48,7 @@
                 android:id="@+id/et_nombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,7 +59,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="@string/hint_email_empleado"
-            android:inputType="textEmailAddress"
             app:boxBackgroundMode="outline"
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,6 +71,7 @@
                 android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,7 +82,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="@string/hint_telefono_empleado"
-            android:inputType="phone"
             app:boxBackgroundMode="outline"
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toStartOf="@+id/tl_fecha_nacimiento"
@@ -95,6 +94,7 @@
                 android:id="@+id/et_telefono"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="phone"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -105,7 +105,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="@string/hint_ciudad_empleado"
-            android:inputType="text"
             app:boxBackgroundMode="outline"
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toStartOf="@+id/tl_salario"
@@ -118,6 +117,7 @@
                 android:id="@+id/et_ciudad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -128,7 +128,6 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
             android:hint="@string/hint_fecha_empleado"
-            android:inputType="date"
             app:boxBackgroundMode="outline"
             app:endIconMode="clear_text"
             app:layout_constraintBottom_toBottomOf="@+id/tl_telefono"
@@ -176,7 +175,6 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:hint="@string/hint_salario_empleado"
-            android:inputType="numberDecimal"
             app:boxBackgroundMode="outline"
             app:endIconMode="clear_text"
             app:layout_constraintBottom_toBottomOf="@+id/tl_ciudad"
@@ -190,6 +188,7 @@
                 android:id="@+id/et_salario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -199,7 +198,6 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:hint="@string/hint_fecha_contratacion_empleado"
-            android:inputType="date"
             app:boxBackgroundMode="outline"
             app:endIconMode="clear_text"
             app:layout_constraintBottom_toBottomOf="@+id/tl_fecha_fin"
@@ -226,7 +224,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="@string/hint_fecha_baja_empleado"
-            android:inputType="date"
             app:boxBackgroundMode="outline"
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
@@ -252,7 +249,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="@string/hint_notas_empleado"
-            android:inputType="textMultiLine"
             app:boxBackgroundMode="outline"
             app:endIconMode="clear_text"
             app:layout_constraintEnd_toEndOf="parent"
@@ -265,6 +261,7 @@
                 android:id="@+id/et_notas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
                 android:minLines="3" />
         </com.google.android.material.textfield.TextInputLayout>
 
