@@ -9,11 +9,23 @@ import com.example.proyectofinal.data.providers.repository.ListaEmpleadoReposito
 class ListaEmpleadoViewModel: ViewModel() {
     private val repository = ListaEmpleadoRepository()
     private val _empleados = MutableLiveData<List<Empleado>>()
+    private val _empleadosCompleta = MutableLiveData<List<Empleado>>()
 
     val empleados: LiveData<List<Empleado>> = _empleados
+    val empleadosCompleta: LiveData<List<Empleado>> = _empleadosCompleta
     init {
         repository.getListaEmpleado("Activo") { lista ->
             _empleados.postValue(lista)
+        }
+
+        repository.getListaEmpleado { lista ->
+            _empleadosCompleta.postValue(lista)
+        }
+    }
+
+    fun getListaEmpleadoCompleta() {
+        repository.getListaEmpleado { lista ->
+            _empleadosCompleta.postValue(lista)
         }
     }
 

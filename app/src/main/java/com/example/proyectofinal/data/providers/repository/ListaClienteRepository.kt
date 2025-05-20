@@ -35,6 +35,27 @@ class ListaClienteRepository {
         })
     }
 
+    fun getClientes(datos: (MutableList<Cliente>) -> Unit) {
+        database.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val lista = mutableListOf<Cliente>()
+                for (nodo in snapshot.children) {
+                    val cliente = nodo.getValue(Cliente::class.java)
+                    if (cliente != null) {
+                        lista.add(cliente)
+                    }
+                }
+
+                lista.sortBy { it.nombre }
+                datos(lista)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                System.out.println("Error al leer realtime: ${error.message}")
+            }
+        })
+    }
+
     fun getClienteBuscador(busqueda: String, callback: (List<Cliente>) -> Unit) {
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

@@ -16,6 +16,14 @@ class ListaClienteViewModel: ViewModel() {
         }
     }
 
+    fun getListaCliente(): MutableList<Cliente> {
+        val lista = mutableListOf<Cliente>()
+        repository.getClientes { lista ->
+            _clientes.postValue(lista)
+        }
+        return lista
+    }
+
     fun getListaClienteBuscador(busqueda: String) {
         repository.getClienteBuscador(busqueda) { lista ->
             _clientes.postValue(lista)

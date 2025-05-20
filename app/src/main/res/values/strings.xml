@@ -62,6 +62,8 @@
     <string name="hint_calificacion_proveedor">Calificación</string>
     <string name="hint_notas_proveedor">Notas adicionales</string>
     <string name="cb_estado_proveedor">Activo</string>
+    <string name="tv_entrada_proveedor">"Entradas del proveedor</string>
+    <string name="tv_lista_entrada_proveedor">No hay entradas registradas en el sistema</string>
 
     <string name="tv_cliente">Clientes</string>
     <string name="tv_lista_cliente">No hay clientes registrados en el sistema</string>
@@ -75,6 +77,8 @@
     <string name="hint_ciudad_cliente">Ciudad...</string>
     <string name="hint_frecuencia_cliente">Frecuencia...</string>
     <string name="hint_notas_cliente">Notas adicionales</string>
+    <string name="tv_salida_cliente">Salidas al cliente</string>
+    <string name="tv_lista_salida_cliente">No hay salidas registradas en el sistema</string>
 
     <string-array name="frecuencia">
         <item>Semanal</item>
@@ -92,6 +96,42 @@
     <string name="hint_cantidad_producto">Cantidad...</string>
     <string name="hint_descripcion_producto">Descripción...</string>
     <string name="btn_editar_producto">Editar</string>
+
+    <string name="tv_entrada">Entradas</string>
+    <string name="tv_lista_entrada">No hay entradas registradas en el sistema</string>
+    <string name="tv_titulo_entrada">Nueva Entrada</string>
+    <string name="tv_titulo_entrada_editar">Editar Entrada</string>
+    <string name="tv_titulo_entrada_info">Información Entrada</string>
+    <string name="hint_nombre_entrada">Nombre...</string>
+    <string name="hint_fecha_entrada">Fecha...</string>
+    <string name="hint_proveedor_entrada">Proveedor...</string>
+    <string name="hint_producto_entrada">Producto...</string>
+    <string name="hint_cantidad_entrada">Cantidad...</string>
+    <string name="hint_precio_entrada">Precio...</string>
+    <string name="hint_hora_entrada">Hora...</string>
+    <string name="hint_notas_entrada">Notas adicionales</string>
+    <string name="cb_estado_entrada">Terminada</string>
+
+    <string name="tv_salida">Salidas</string>
+    <string name="tv_lista_salida">No hay salidas registradas en el sistema</string>
+    <string name="tv_titulo_salida">Nueva Salida</string>
+    <string name="tv_titulo_salida_editar">Editar Salida</string>
+    <string name="tv_titulo_salida_info">Información Salida</string>
+    <string name="hint_nombre_salida">Nombre...</string>
+    <string name="hint_fecha_salida">Fecha...</string>
+    <string name="hint_cliente_salida">Cliente...</string>
+    <string name="hint_producto_salida">Producto...</string>
+    <string name="hint_cantidad_salida">Cantidad...</string>
+    <string name="hint_precio_salida">Precio...</string>
+    <string name="hint_hora_salida">Hora...</string>
+    <string name="hint_notas_salida">Notas adicionales</string>
+    <string name="cb_estado_salida">Terminada</string>
+
+    <string name="tv_creado_por">Creado: </string>
+    <string name="tv_modificado_por">Ultima modificación: </string>
+
+    <string name="btn_pendiente">Pendientes</string>
+    <string name="btn_completadas">Completadas</string>
 
     <string name="btn_nuevo">Nuevo</string>
     <string name="btn_volver">Volver</string>

@@ -18,6 +18,12 @@ class ListaUsuarioViewModel: ViewModel() {
         }
     }
 
+    fun getUsuarioByEmail(email: String, callback: (Usuario?) -> Unit) {
+        repository.getUsuarioByEmail(email) { usuario ->
+            callback(usuario)
+        }
+    }
+
     fun addUsuario(email: String){
         repository.addUsuario(Usuario(
             email = email

@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#6200EE</color>
     <color name="fondo">#EACAEF</color>
     <color name="purple_700">#6200EE</color>
 
@@ -26,4 +27,8 @@
     <color name="joyeria">#8BC34A</color>
     <color name="electronicos">#FFEB3B</color>
     <color name="color_defecto">#FFFFFF</color>
+
+    <color name="color_pendiente">#8BC34A</color>
+    <color name="color_terminado">#F44336</color>
+    <color name="color_fondo_terminado">#F49A9A</color>
 </resources>

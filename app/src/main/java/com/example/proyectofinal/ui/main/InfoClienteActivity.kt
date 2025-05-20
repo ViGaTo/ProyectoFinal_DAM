@@ -1,17 +1,32 @@
 package com.example.proyectofinal.ui.main
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectofinal.R
 import com.example.proyectofinal.data.models.Cliente
 import com.example.proyectofinal.data.models.Proveedor
+import com.example.proyectofinal.data.models.Salida
 import com.example.proyectofinal.databinding.ActivityInfoClienteBinding
+import com.example.proyectofinal.ui.adapters.SalidaClienteAdapter
+import com.example.proyectofinal.ui.viewmodels.ListaEntradaViewModel
+import com.example.proyectofinal.ui.viewmodels.ListaSalidaViewModel
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class InfoClienteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInfoClienteBinding
+    private lateinit var adapter: SalidaClienteAdapter
+    private lateinit var database: DatabaseReference
+
+    private var lista = mutableListOf<Salida>()
+    private val viewModel: ListaSalidaViewModel by viewModels()
 
     private var nombre = ""
     private var email = ""
@@ -34,11 +49,44 @@ class InfoClienteActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        database = FirebaseDatabase.getInstance().getReference("salidas")
+        viewModel.salidasCliente.observe(this, { salidas ->
+            if (salidas.isNullOrEmpty()) {
+                binding.tvLista.visibility = View.VISIBLE
+            } else {
+                binding.tvLista.visibility = View.GONE
+            }
+            adapter.actualizarLista(salidas)
+        })
 
         setListeners()
         recogerDatos()
         ponerDatos()
-        //setRecycler()
+        setRecycler()
+        viewModel.getListaSalidaByCliente(cliente.email)
+    }
+
+    private fun setRecycler() {
+        val layoutManager = LinearLayoutManager(this)
+        binding.recycler.layoutManager = layoutManager
+
+        adapter = SalidaClienteAdapter(lista, {item -> infoSalida(item)})
+        binding.recycler.adapter = adapter
+    }
+
+    private fun infoSalida(item: Salida) {
+        val bundle = Bundle().apply {
+            putSerializable("INFO", item)
+        }
+        irFormularioInfoSalidaActivity(bundle)
+    }
+
+    private fun irFormularioInfoSalidaActivity(bundle: Bundle?=null) {
+        val intent = Intent(this, FormularioSalidaActivity::class.java)
+        if (bundle != null) {
+            intent.putExtras(bundle)
+        }
+        startActivity(intent)
     }
 
     private fun ponerDatos() {

@@ -113,6 +113,14 @@ class ProductoActivity : AppCompatActivity() {
                     startActivity(Intent(this, ProductoActivity::class.java))
                     true
                 }
+                R.id.item_inventario_entradas -> {
+                    startActivity(Intent(this, EntradaActivity::class.java))
+                    true
+                }
+                R.id.item_inventario_salidas -> {
+                    startActivity(Intent(this, SalidaActivity::class.java))
+                    true
+                }
                 R.id.item_cerrar_sesion -> {
                     auth.signOut()
                     preferences.limpiarPreferencias()

@@ -35,6 +35,20 @@ class ListaUsuarioRepository {
         })
     }
 
+    fun getUsuarioByEmail(email: String, callback: (Usuario?) -> Unit) {
+        database.child(email.encodeEmail()).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val usuario = snapshot.getValue(Usuario::class.java)
+                callback(usuario)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                System.out.println("Error al leer realtime: ${error.message}")
+                callback(null)
+            }
+        })
+    }
+
     fun addUsuario(usuario: Usuario) {
         database.child(usuario.email.encodeEmail()).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

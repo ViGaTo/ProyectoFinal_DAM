@@ -2,6 +2,7 @@ package com.example.proyectofinal.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.SearchView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -10,47 +11,48 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectofinal.R
-import com.example.proyectofinal.data.models.Proveedor
-import com.example.proyectofinal.databinding.ActivityProveedorBinding
-import com.example.proyectofinal.ui.adapters.ProveedorAdapter
-import com.example.proyectofinal.ui.viewmodels.ListaProveedorViewModel
+import com.example.proyectofinal.data.models.Salida
+import com.example.proyectofinal.databinding.ActivitySalidaBinding
+import com.example.proyectofinal.ui.adapters.SalidaAdapter
+import com.example.proyectofinal.ui.viewmodels.ListaSalidaViewModel
 import com.example.proyectofinal.utils.Preferences
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class ProveedorActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityProveedorBinding
-    private lateinit var adapter: ProveedorAdapter
+class SalidaActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySalidaBinding
+    private lateinit var adapter: SalidaAdapter
     private lateinit var database: DatabaseReference
-    private var lista = mutableListOf<Proveedor>()
-    private val viewModel: ListaProveedorViewModel by viewModels()
+    private var lista = mutableListOf<Salida>()
+    private val viewModel: ListaSalidaViewModel by viewModels()
 
     private lateinit var preferences: Preferences
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityProveedorBinding.inflate(layoutInflater)
+        binding = ActivitySalidaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        database = FirebaseDatabase.getInstance().getReference("proveedores")
-        viewModel.proveedores.observe(this, { proveedores ->
-            if (proveedores.isNullOrEmpty()) {
-                binding.tvLista.visibility = android.view.View.VISIBLE
+
+        database = FirebaseDatabase.getInstance().getReference("salidas")
+        viewModel.salidas.observe(this, { salidas ->
+            if (salidas.isNullOrEmpty()) {
+                binding.tvLista.visibility = View.VISIBLE
             } else {
-                binding.tvLista.visibility = android.view.View.GONE
+                binding.tvLista.visibility = View.GONE
             }
-            adapter.actualizarLista(proveedores)
+            adapter.actualizarLista(salidas)
         })
         auth = FirebaseAuth.getInstance()
         preferences = Preferences(this)
         val menu = binding.menu.menu
-        val item = menu.findItem(R.id.item_proveedores)
+        val item = menu.findItem(R.id.item_inventario_salidas)
 
         item?.let {
             it.isChecked = true
@@ -65,8 +67,26 @@ class ProveedorActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         binding.recycler.layoutManager = layoutManager
 
-        adapter = ProveedorAdapter(lista, {item -> deleteProveedor(item)}, {item -> updateProveedor(item)}, {item -> infoProveedor(item)})
+        adapter = SalidaAdapter(lista, {item -> deleteSalida(item) }, { item -> updateSalida(item) }, { item -> infoSalida(item) })
         binding.recycler.adapter = adapter
+    }
+
+    private fun infoSalida(item: Salida) {
+        val bundle = Bundle().apply {
+            putSerializable("INFO", item)
+        }
+        irFormularioActivity(bundle)
+    }
+
+    private fun updateSalida(item: Salida) {
+        val bundle = Bundle().apply {
+            putSerializable("EDITAR", item)
+        }
+        irFormularioActivity(bundle)
+    }
+
+    private fun deleteSalida(item: Salida) {
+        viewModel.deleteSalida(item)
     }
 
     private fun setListeners() {
@@ -78,24 +98,45 @@ class ProveedorActivity : AppCompatActivity() {
             finish()
         }
 
+        binding.btnActivo.setOnClickListener {
+            binding.searchView.setQuery("", false)
+            if(binding.btnActivo.text == "Completadas"){
+                binding.btnActivo.text = "Pendientes"
+                binding.btnActivo.setBackgroundColor(resources.getColor(R.color.color_pendiente))
+                viewModel.getListaSalida("Completada")
+            } else {
+                binding.btnActivo.text = "Completadas"
+                binding.btnActivo.setBackgroundColor(resources.getColor(R.color.color_terminado))
+                viewModel.getListaSalida("Pendiente")
+            }
+        }
+
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
-                    viewModel.getListaProveedorBuscador(query)
+                    if(binding.btnActivo.text == "Completadas"){
+                        viewModel.getListaSalidaBuscador(query, "Pendiente")
+                    } else {
+                        viewModel.getListaSalidaBuscador(query, "Completada")
+                    }
                 }
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText != null) {
-                    viewModel.getListaProveedorBuscador(newText)
+                    if(binding.btnActivo.text == "Completadas"){
+                        viewModel.getListaSalidaBuscador(newText, "Pendiente")
+                    } else {
+                        viewModel.getListaSalidaBuscador(newText, "Completada")
+                    }
                 }
                 return false
             }
         })
 
-        binding.menu.setNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
+        binding.menu.setNavigationItemSelectedListener {
+            when (it.itemId) {
                 R.id.item_inicio -> {
                     startActivity(Intent(this, PortalActivity::class.java))
                     true
@@ -143,37 +184,11 @@ class ProveedorActivity : AppCompatActivity() {
         }
     }
 
-    private fun infoProveedor(item: Proveedor) {
-        val bundle = Bundle().apply {
-            putSerializable("INFO", item)
-        }
-        irInfoActivity(bundle)
-    }
-
-    private fun irInfoActivity(bundle: Bundle?=null) {
-        val intent = Intent(this, InfoProveedorActivity::class.java)
-        if(bundle != null) {
-            intent.putExtras(bundle)
-        }
-        startActivity(intent)
-    }
-
-    private fun updateProveedor(item: Proveedor) {
-        val bundle = Bundle().apply {
-            putSerializable("EDITAR", item)
-        }
-        irFormularioActivity(bundle)
-    }
-
     private fun irFormularioActivity(bundle: Bundle?=null) {
-        val intent = Intent(this, FormularioProveedorActivity::class.java)
-        if(bundle != null) {
+        val intent = Intent(this, FormularioSalidaActivity::class.java)
+        if (bundle != null) {
             intent.putExtras(bundle)
         }
         startActivity(intent)
-    }
-
-    private fun deleteProveedor(item: Proveedor) {
-        viewModel.deleteProveedor(item)
     }
 }

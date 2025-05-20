@@ -6,16 +6,16 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.proyectofinal.R
 import com.example.proyectofinal.data.models.Empleado
 import com.example.proyectofinal.databinding.ActivityFormularioEmpleadoBinding
+import com.example.proyectofinal.ui.viewmodels.ListaUsuarioViewModel
 import com.example.proyectofinal.utils.encodeEmail
-import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -28,6 +28,8 @@ import java.util.Locale
 
 class FormularioEmpleadoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFormularioEmpleadoBinding
+
+    private val viewModel: ListaUsuarioViewModel by viewModels()
 
     private var nombre = ""
     private var email = ""
@@ -293,6 +295,7 @@ class FormularioEmpleadoActivity : AppCompatActivity() {
                 } else {
                     val item = Empleado(nombre, email, telefono, ciudad, fecha_nacimiento, estado, puesto, salario, fechaContratacion, fechaFinContrato, notas)
                     database.child(email.encodeEmail()).setValue(item).addOnSuccessListener {
+                        comprobarYCrearUsuario()
                         finish()
                     }.addOnFailureListener {
                         binding.tlEmail.error = "ERROR. No se ha podido guardar el empleado."
@@ -302,5 +305,21 @@ class FormularioEmpleadoActivity : AppCompatActivity() {
 
             override fun onCancelled(error: DatabaseError) {}
         })
+    }
+
+    private fun comprobarYCrearUsuario() {
+        if(!obtenerUsuario(email)) {
+            viewModel.addUsuario(email)
+        }
+    }
+
+    private fun obtenerUsuario(email: String): Boolean{
+        var existe = false
+        viewModel.getUsuarioByEmail(email) { usuario ->
+            if (usuario != null) {
+                existe = true
+            }
+        }
+        return existe
     }
 }

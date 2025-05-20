@@ -20,10 +20,6 @@ import com.squareup.picasso.Picasso
 class InfoProductoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInfoProductoBinding
 
-    private var nombre = ""
-    private var precio = 0.0
-    private var descripcion = ""
-    private var categoria = ""
     private var cantidad = 0
 
     private var info = false

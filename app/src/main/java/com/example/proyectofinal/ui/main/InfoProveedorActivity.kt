@@ -1,16 +1,31 @@
 package com.example.proyectofinal.ui.main
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectofinal.R
+import com.example.proyectofinal.data.models.Entrada
 import com.example.proyectofinal.data.models.Proveedor
 import com.example.proyectofinal.databinding.ActivityInfoProveedorBinding
+import com.example.proyectofinal.ui.adapters.EntradaAdapter
+import com.example.proyectofinal.ui.adapters.EntradaProveedorAdapter
+import com.example.proyectofinal.ui.viewmodels.ListaEntradaViewModel
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class InfoProveedorActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInfoProveedorBinding
+    private lateinit var adapter: EntradaProveedorAdapter
+    private lateinit var database: DatabaseReference
+
+    private var lista = mutableListOf<Entrada>()
+    private val viewModel: ListaEntradaViewModel by viewModels()
 
     private var nombre = ""
     private var telefono = ""
@@ -33,11 +48,44 @@ class InfoProveedorActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        database = FirebaseDatabase.getInstance().getReference("entradas")
+        viewModel.entradasProveedor.observe(this, { entradas ->
+            if (entradas.isNullOrEmpty()) {
+                binding.tvLista.visibility = View.VISIBLE
+            } else {
+                binding.tvLista.visibility = View.GONE
+            }
+            adapter.actualizarLista(entradas)
+        })
 
         setListeners()
         recogerDatos()
         ponerDatos()
-        //setRecycler()
+        setRecycler()
+        viewModel.getListaEntradaByProveedor(proveedor.email)
+    }
+
+    private fun setRecycler() {
+        val layoutManager = LinearLayoutManager(this)
+        binding.recycler.layoutManager = layoutManager
+
+        adapter = EntradaProveedorAdapter(lista, {item -> infoEntrada(item)})
+        binding.recycler.adapter = adapter
+    }
+
+    private fun infoEntrada(item: Entrada) {
+        val bundle = Bundle().apply {
+            putSerializable("INFO", item)
+        }
+        irFormularioInfoEntradaActivity(bundle)
+    }
+
+    private fun irFormularioInfoEntradaActivity(bundle: Bundle) {
+        val intent = Intent(this, FormularioEntradaActivity::class.java)
+        if (bundle != null) {
+            intent.putExtras(bundle)
+        }
+        startActivity(intent)
     }
 
     private fun ponerDatos() {

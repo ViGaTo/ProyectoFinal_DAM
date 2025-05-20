@@ -25,6 +25,7 @@ class ListaProveedorRepository {
                     }
                 }
 
+                lista.sortBy { it.estado }
                 lista.sortBy { it.nombre }
                 callback(lista)
             }

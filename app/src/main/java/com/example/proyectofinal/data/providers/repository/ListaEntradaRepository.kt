@@ -1,7 +1,6 @@
 package com.example.proyectofinal.data.providers.repository
 
-import com.example.proyectofinal.data.models.Empleado
-import com.example.proyectofinal.utils.encodeEmail
+import com.example.proyectofinal.data.models.Entrada
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -10,22 +9,23 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class ListaEmpleadoRepository {
-    val database = FirebaseDatabase.getInstance().getReference("empleados")
+class ListaEntradaRepository {
+    val database = FirebaseDatabase.getInstance().getReference("entradas")
     var auth: FirebaseAuth = Firebase.auth
 
-    fun getListaEmpleado(estado: String, callback: (List<Empleado>) -> Unit) {
+    fun getListaEntrada(estado: String, callback: (List<Entrada>) -> Unit) {
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val lista = mutableListOf<Empleado>()
+                val lista = mutableListOf<Entrada>()
                 for (nodo in snapshot.children) {
-                    val empleado = nodo.getValue(Empleado::class.java)
-                    if (empleado != null && empleado.estado == estado) {
-                        lista.add(empleado)
+                    val entrada = nodo.getValue(Entrada::class.java)
+                    if (entrada != null && entrada.estado == estado) {
+                        lista.add(entrada)
                     }
                 }
 
-                lista.sortBy { it.nombreApellidos }
+                lista.sortBy { it.fecha_entrada }
+                lista.sortByDescending { it.hora_entrada }
                 callback(lista)
             }
 
@@ -35,18 +35,19 @@ class ListaEmpleadoRepository {
         })
     }
 
-    fun getListaEmpleado(callback: (List<Empleado>) -> Unit) {
+    fun getListaEntradaByProveedor(emailProveedor: String, callback: (List<Entrada>) -> Unit) {
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val lista = mutableListOf<Empleado>()
+                val lista = mutableListOf<Entrada>()
                 for (nodo in snapshot.children) {
-                    val empleado = nodo.getValue(Empleado::class.java)
-                    if (empleado != null) {
-                        lista.add(empleado)
+                    val entrada = nodo.getValue(Entrada::class.java)
+                    if (entrada != null && entrada.email_proveedor == emailProveedor) {
+                        lista.add(entrada)
                     }
                 }
 
-                lista.sortBy { it.nombreApellidos }
+                lista.sortBy { it.fecha_entrada }
+                lista.sortByDescending { it.hora_entrada }
                 callback(lista)
             }
 
@@ -56,18 +57,19 @@ class ListaEmpleadoRepository {
         })
     }
 
-    fun getListaEmpleadoBuscador(busqueda: String, estado: String, callback: (List<Empleado>) -> Unit) {
+    fun getListaEntradaBuscador(busqueda: String, estado: String, callback: (List<Entrada>) -> Unit) {
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val lista = mutableListOf<Empleado>()
+                val lista = mutableListOf<Entrada>()
                 for (nodo in snapshot.children) {
-                    val empleado = nodo.getValue(Empleado::class.java)
-                    if (empleado != null && empleado.nombreApellidos.contains(busqueda, true) && empleado.estado == estado) {
-                        lista.add(empleado)
+                    val entrada = nodo.getValue(Entrada::class.java)
+                    if (entrada != null && entrada.id_producto.contains(busqueda, true) && entrada.estado == estado) {
+                        lista.add(entrada)
                     }
                 }
 
-                lista.sortBy { it.nombreApellidos }
+                lista.sortBy { it.fecha_entrada }
+                lista.sortByDescending { it.hora_entrada }
                 callback(lista)
             }
 
@@ -77,13 +79,13 @@ class ListaEmpleadoRepository {
         })
     }
 
-    fun deleteEmpleado(empleado: Empleado) {
-        database.child(empleado.email.encodeEmail()).removeValue()
+    fun deleteEntrada(entrada: Entrada) {
+        database.child(entrada.nombre).removeValue()
             .addOnCompleteListener {
-                System.out.println("Empleado eliminado")
+                System.out.println("Entrada eliminada")
             }
             .addOnFailureListener {
-                System.out.println("Error al eliminar empleado")
+                System.out.println("Error al eliminar la entrada")
             }
     }
 }

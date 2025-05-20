@@ -43,9 +43,9 @@ class EmpleadoActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance().getReference("empleados")
         viewModel.empleados.observe(this, { empleados ->
             if (empleados.isNullOrEmpty()) {
-                binding.tvLista.visibility = View.VISIBLE // Muestra el TextView
+                binding.tvLista.visibility = View.VISIBLE
             } else {
-                binding.tvLista.visibility = View.GONE // Oculta el TextView
+                binding.tvLista.visibility = View.GONE
             }
             adapter.actualizarLista(empleados)
         })
@@ -160,6 +160,14 @@ class EmpleadoActivity : AppCompatActivity() {
                 }
                 R.id.item_productos -> {
                     startActivity(Intent(this, ProductoActivity::class.java))
+                    true
+                }
+                R.id.item_inventario_entradas -> {
+                    startActivity(Intent(this, EntradaActivity::class.java))
+                    true
+                }
+                R.id.item_inventario_salidas -> {
+                    startActivity(Intent(this, SalidaActivity::class.java))
                     true
                 }
                 R.id.item_cerrar_sesion -> {
