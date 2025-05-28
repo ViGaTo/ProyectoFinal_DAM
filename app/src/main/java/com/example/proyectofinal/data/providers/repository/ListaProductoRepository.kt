@@ -34,27 +34,6 @@ class ListaProductoRepository {
         })
     }
 
-    fun getProductos(datos: (MutableList<Producto>) -> Unit) {
-        database.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val lista = mutableListOf<Producto>()
-                for (nodo in snapshot.children) {
-                    val producto = nodo.getValue(Producto::class.java)
-                    if (producto != null) {
-                        lista.add(producto)
-                    }
-                }
-
-                lista.sortBy { it.titulo }
-                datos(lista)
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                System.out.println("Error al leer realtime: ${error.message}")
-            }
-        })
-    }
-
     fun getProductoBuscador(busqueda: String, callback: (List<Producto>) -> Unit) {
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

@@ -127,7 +127,6 @@ class FormularioSalidaActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
-        //Cada vez que se cambia la cantidad, se actualiza el precio
         binding.etCantidad.setOnFocusChangeListener { _, _ ->
             actualizarPrecio()
         }
@@ -451,6 +450,7 @@ class FormularioSalidaActivity : AppCompatActivity() {
             binding.tvTitulo.text = getString(R.string.tv_titulo_salida_editar)
             binding.etNombre.setText(salida.nombre)
             binding.etNombre.isEnabled = false
+            binding.etNombre.setTextColor(resources.getColor(R.color.black))
             binding.etCantidad.setText(salida.cantidad_producto.toString())
             binding.etPrecio.setText(salida.precio.toString())
             binding.etFechaSalida.setText(salida.fecha_salida)
@@ -461,18 +461,25 @@ class FormularioSalidaActivity : AppCompatActivity() {
             binding.tvTitulo.text = getString(R.string.tv_titulo_salida_info)
             binding.etNombre.setText(salida.nombre)
             binding.etNombre.isEnabled = false
+            binding.etNombre.setTextColor(resources.getColor(R.color.black))
             binding.etCantidad.setText(salida.cantidad_producto.toString())
             binding.etCantidad.isEnabled = false
+            binding.etCantidad.setTextColor(resources.getColor(R.color.black))
             binding.etPrecio.setText(salida.precio.toString())
             binding.etPrecio.isEnabled = false
+            binding.etPrecio.setTextColor(resources.getColor(R.color.black))
             binding.etFechaSalida.setText(salida.fecha_salida)
             binding.etFechaSalida.isEnabled = false
+            binding.etFechaSalida.setTextColor(resources.getColor(R.color.black))
             binding.etHoraSalida.setText(salida.hora_salida)
             binding.etHoraSalida.isEnabled = false
+            binding.etHoraSalida.setTextColor(resources.getColor(R.color.black))
             binding.cbActivo.isChecked = if(salida.estado == "Completada") true else false
             binding.cbActivo.isEnabled = false
+            binding.cbActivo.setTextColor(resources.getColor(R.color.black))
             binding.etNotas.setText(salida.notas)
             binding.etNotas.isEnabled = false
+            binding.etNotas.setTextColor(resources.getColor(R.color.black))
             binding.btnAceptar.isEnabled = false
             binding.btnVolverFormulario.isEnabled = true
             binding.btnVolverFormulario.isClickable = true

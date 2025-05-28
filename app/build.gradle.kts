@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.proyectofinal"
-        minSdk = 28
+        minSdk = 25
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -41,6 +41,8 @@ android {
 
 dependencies {
     implementation("me.zhanghai.android.materialratingbar:library:1.4.0")
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    implementation("com.tom-roush:pdfbox-android:2.0.27.0")
     implementation(libs.retrofit)
     implementation(libs.picasso)
     implementation(libs.converter.gson)

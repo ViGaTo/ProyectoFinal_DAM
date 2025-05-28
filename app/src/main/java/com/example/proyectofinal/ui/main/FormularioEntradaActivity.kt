@@ -196,6 +196,7 @@ class FormularioEntradaActivity : AppCompatActivity() {
             binding.tvTitulo.text = getString(R.string.tv_titulo_entrada_editar)
             binding.etNombre.setText(entrada.nombre)
             binding.etNombre.isEnabled = false
+            binding.etNombre.setTextColor(resources.getColor(R.color.black))
             binding.etCantidad.setText(entrada.cantidad_producto.toString())
             binding.etPrecio.setText(entrada.precio.toString())
             binding.etFechaEntrada.setText(entrada.fecha_entrada)
@@ -206,18 +207,24 @@ class FormularioEntradaActivity : AppCompatActivity() {
             binding.tvTitulo.text = getString(R.string.tv_titulo_entrada_info)
             binding.etNombre.setText(entrada.nombre)
             binding.etNombre.isEnabled = false
+            binding.etNombre.setTextColor(resources.getColor(R.color.black))
             binding.etCantidad.setText(entrada.cantidad_producto.toString())
             binding.etCantidad.isEnabled = false
+            binding.etCantidad.setTextColor(resources.getColor(R.color.black))
             binding.etPrecio.setText(entrada.precio.toString())
             binding.etPrecio.isEnabled = false
+            binding.etPrecio.setTextColor(resources.getColor(R.color.black))
             binding.etFechaEntrada.setText(entrada.fecha_entrada)
             binding.etFechaEntrada.isEnabled = false
+            binding.etFechaEntrada.setTextColor(resources.getColor(R.color.black))
             binding.etHoraEntrada.setText(entrada.hora_entrada)
             binding.etHoraEntrada.isEnabled = false
+            binding.etHoraEntrada.setTextColor(resources.getColor(R.color.black))
             binding.cbActivo.isChecked = if(entrada.estado == "Completada") true else false
             binding.cbActivo.isEnabled = false
             binding.etNotas.setText(entrada.notas)
             binding.etNotas.isEnabled = false
+            binding.etNotas.setTextColor(resources.getColor(R.color.black))
             binding.btnAceptar.isEnabled = false
             binding.btnVolverFormulario.isEnabled = true
             binding.btnVolverFormulario.isClickable = true

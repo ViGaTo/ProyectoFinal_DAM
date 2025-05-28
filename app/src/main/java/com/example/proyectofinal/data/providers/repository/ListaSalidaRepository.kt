@@ -80,6 +80,12 @@ class ListaSalidaRepository {
     }
 
     fun deleteSalida(salida: Salida) {
-        database.child(salida.id_producto).removeValue()
+        database.child(salida.nombre).removeValue()
+            .addOnCompleteListener {
+                System.out.println("Salida eliminada")
+            }
+            .addOnFailureListener {
+                System.out.println("Error al eliminar la salida")
+            }
     }
 }

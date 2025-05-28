@@ -62,6 +62,7 @@ class FormularioClienteActivity : AppCompatActivity() {
             binding.etNombre.setText(cliente.nombre)
             binding.etEmail.setText(cliente.email)
             binding.etEmail.isEnabled = false
+            binding.etEmail.setTextColor(resources.getColor(R.color.black))
             binding.etTelefono.setText(cliente.telefono)
             binding.etDireccion.setText(cliente.direccion)
             binding.etCiudad.setText(cliente.ciudad)

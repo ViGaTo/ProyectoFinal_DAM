@@ -125,7 +125,12 @@ class FormularioEmpleadoActivity : AppCompatActivity() {
         val autoCompleteTextView = findViewById<AutoCompleteTextView>(R.id.et_puesto)
         val opciones = resources.getStringArray(R.array.tipos)
         val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, opciones)
-        autoCompleteTextView.setAdapter(adapter)
+
+        if(info){
+            autoCompleteTextView.setText(empleado.puesto, false)
+        } else {
+            autoCompleteTextView.setAdapter(adapter)
+        }
     }
 
     private fun ponerDatos() {
@@ -134,6 +139,7 @@ class FormularioEmpleadoActivity : AppCompatActivity() {
             binding.etNombre.setText(empleado.nombreApellidos)
             binding.etEmail.isEnabled = false
             binding.etEmail.setText(empleado.email)
+            binding.etEmail.setTextColor(resources.getColor(R.color.black))
             binding.etTelefono.setText(empleado.telefono)
             binding.etCiudad.setText(empleado.ciudad)
             binding.etFechaNacimiento.setText(empleado.fecha_nacimiento)
@@ -147,26 +153,36 @@ class FormularioEmpleadoActivity : AppCompatActivity() {
             binding.tvTitulo.text = getString(R.string.tv_titulo_empleado_info)
             binding.etNombre.setText(empleado.nombreApellidos)
             binding.etNombre.isEnabled = false
+            binding.etNombre.setTextColor(resources.getColor(R.color.black))
             binding.etEmail.isEnabled = false
             binding.etEmail.setText(empleado.email)
+            binding.etEmail.setTextColor(resources.getColor(R.color.black))
             binding.etTelefono.setText(empleado.telefono)
             binding.etTelefono.isEnabled = false
+            binding.etTelefono.setTextColor(resources.getColor(R.color.black))
             binding.etCiudad.setText(empleado.ciudad)
             binding.etCiudad.isEnabled = false
+            binding.etCiudad.setTextColor(resources.getColor(R.color.black))
             binding.etFechaNacimiento.setText(empleado.fecha_nacimiento)
             binding.etFechaNacimiento.isEnabled = false
+            binding.etFechaNacimiento.setTextColor(resources.getColor(R.color.black))
             binding.cbActivo.isChecked = if(empleado.estado == "Activo") true else false
             binding.cbActivo.isEnabled = false
             binding.etPuesto.setText(empleado.puesto)
             binding.etPuesto.isEnabled = false
+            binding.etPuesto.setTextColor(resources.getColor(R.color.black))
             binding.etSalario.setText(empleado.salario.toString())
             binding.etSalario.isEnabled = false
+            binding.etSalario.setTextColor(resources.getColor(R.color.black))
             binding.etFechaContratacion.setText(empleado.fechaContratacion)
             binding.etFechaContratacion.isEnabled = false
+            binding.etFechaContratacion.setTextColor(resources.getColor(R.color.black))
             binding.etFechaFin.setText(empleado.fechaFinContrato)
             binding.etFechaFin.isEnabled = false
+            binding.etFechaFin.setTextColor(resources.getColor(R.color.black))
             binding.etNotas.setText(empleado.notas)
             binding.etNotas.isEnabled = false
+            binding.etNotas.setTextColor(resources.getColor(R.color.black))
             binding.btnAceptar.isEnabled = false
             binding.btnVolverFormulario.isEnabled = true
             binding.btnVolverFormulario.isClickable = true

@@ -45,14 +45,19 @@ class InfoProductoActivity : AppCompatActivity() {
         binding.tvTitulo.text = getString(R.string.tv_titulo_producto_info)
         binding.etNombre.setText(producto.titulo)
         binding.etNombre.isEnabled = false
+        binding.etNombre.setTextColor(resources.getColor(R.color.black))
         binding.etPrecio.setText(producto.precio.toString())
         binding.etPrecio.isEnabled = false
+        binding.etPrecio.setTextColor(resources.getColor(R.color.black))
         binding.etDescripcion.setText(producto.descripcion)
         binding.etDescripcion.isEnabled = false
+        binding.etDescripcion.setTextColor(resources.getColor(R.color.black))
         binding.etCategoria.setText(producto.categoria)
         binding.etCategoria.isEnabled = false
+        binding.etCategoria.setTextColor(resources.getColor(R.color.black))
         binding.etCantidad.setText(producto.cantidad.toString())
         binding.etCantidad.isEnabled = false
+        binding.etCantidad.setTextColor(resources.getColor(R.color.black))
         Picasso.get().load(producto.imagen).into(binding.ivProducto)
     }
 

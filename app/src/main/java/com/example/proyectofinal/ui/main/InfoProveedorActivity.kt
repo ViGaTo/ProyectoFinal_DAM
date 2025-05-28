@@ -93,18 +93,24 @@ class InfoProveedorActivity : AppCompatActivity() {
             binding.tvTitulo.text = getString(R.string.tv_titulo_proveedor_info)
             binding.etNombre.setText(proveedor.nombre)
             binding.etNombre.isEnabled = false
+            binding.etNombre.setTextColor(resources.getColor(R.color.black))
             binding.etTelefono.setText(proveedor.telefono)
             binding.etTelefono.isEnabled = false
+            binding.etTelefono.setTextColor(resources.getColor(R.color.black))
             binding.etDireccion.setText(proveedor.direccion)
             binding.etDireccion.isEnabled = false
+            binding.etDireccion.setTextColor(resources.getColor(R.color.black))
             binding.etEmail.setText(proveedor.email)
             binding.etEmail.isEnabled = false
+            binding.etEmail.setTextColor(resources.getColor(R.color.black))
             binding.etCiudad.setText(proveedor.ciudad)
             binding.etCiudad.isEnabled = false
+            binding.etCiudad.setTextColor(resources.getColor(R.color.black))
             binding.rbCalificacion.rating = proveedor.calificacion
             binding.rbCalificacion.isEnabled = false
             binding.etNotas.setText(proveedor.notas)
             binding.etNotas.isEnabled = false
+            binding.etNotas.setTextColor(resources.getColor(R.color.black))
             binding.cbActivo.isChecked = proveedor.estado == "Activo"
             binding.cbActivo.isEnabled = false
         }

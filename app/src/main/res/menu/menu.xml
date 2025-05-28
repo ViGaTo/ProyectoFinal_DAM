@@ -52,14 +52,26 @@
                     android:title="Usuarios" />
             </menu>
         </item>
+
+        <item
+            android:id="@+id/item_ayuda"
+            android:icon="@drawable/baseline_help_24"
+            android:title="Ayuda">
+            <menu>
+                <item
+                    android:id="@+id/item_documentacion"
+                    android:icon="@drawable/baseline_document_scanner_24"
+                    android:title="Guía de usuario" />
+                <item
+                    android:id="@+id/item_video"
+                    android:icon="@drawable/baseline_videocam_24"
+                    android:title="Video de uso" />
+            </menu>
+        </item>
     </group>
 
     <group
         android:id="@+id/grupo_ajustes">
-        <item
-            android:id="@+id/item_ayuda"
-            android:icon="@drawable/baseline_help_24"
-            android:title="Ayuda" />
         <item
             android:id="@+id/item_cerrar_sesion"
             android:icon="@drawable/baseline_logout_24"

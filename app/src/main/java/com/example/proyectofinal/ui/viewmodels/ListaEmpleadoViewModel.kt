@@ -23,12 +23,6 @@ class ListaEmpleadoViewModel: ViewModel() {
         }
     }
 
-    fun getListaEmpleadoCompleta() {
-        repository.getListaEmpleado { lista ->
-            _empleadosCompleta.postValue(lista)
-        }
-    }
-
     fun getListaEmpleadoBuscador(busqueda: String, estado: String) {
         repository.getListaEmpleadoBuscador(busqueda, estado) { lista ->
             _empleados.postValue(lista)

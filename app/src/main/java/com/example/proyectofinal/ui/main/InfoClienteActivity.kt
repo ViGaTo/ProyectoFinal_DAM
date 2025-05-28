@@ -94,18 +94,25 @@ class InfoClienteActivity : AppCompatActivity() {
             binding.tvTitulo.text = getString(R.string.tv_titulo_cliente_info)
             binding.etNombre.setText(cliente.nombre)
             binding.etNombre.isEnabled = false
+            binding.etNombre.setTextColor(resources.getColor(R.color.black))
             binding.etTelefono.setText(cliente.telefono)
             binding.etTelefono.isEnabled = false
+            binding.etTelefono.setTextColor(resources.getColor(R.color.black))
             binding.etDireccion.setText(cliente.direccion)
             binding.etDireccion.isEnabled = false
+            binding.etDireccion.setTextColor(resources.getColor(R.color.black))
             binding.etEmail.setText(cliente.email)
             binding.etEmail.isEnabled = false
+            binding.etEmail.setTextColor(resources.getColor(R.color.black))
             binding.etCiudad.setText(cliente.ciudad)
             binding.etCiudad.isEnabled = false
+            binding.etCiudad.setTextColor(resources.getColor(R.color.black))
             binding.etFrecuencia.setText(cliente.frecuencia)
             binding.etFrecuencia.isEnabled = false
+            binding.etFrecuencia.setTextColor(resources.getColor(R.color.black))
             binding.etNotas.setText(cliente.notas)
             binding.etNotas.isEnabled = false
+            binding.etNotas.setTextColor(resources.getColor(R.color.black))
         }
     }
 

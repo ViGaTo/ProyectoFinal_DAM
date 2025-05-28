@@ -54,6 +54,7 @@ class FormularioProveedorActivity : AppCompatActivity() {
             binding.etDireccion.setText(proveedor.direccion)
             binding.etEmail.setText(proveedor.email)
             binding.etEmail.isEnabled = false
+            binding.etEmail.setTextColor(resources.getColor(R.color.black))
             binding.etCiudad.setText(proveedor.ciudad)
             binding.rbCalificacion.rating = proveedor.calificacion
             binding.cbActivo.isChecked = proveedor.estado == "Activo"

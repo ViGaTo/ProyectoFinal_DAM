@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -11,9 +12,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectofinal.R
+import com.example.proyectofinal.data.models.Producto
 import com.example.proyectofinal.data.models.Salida
 import com.example.proyectofinal.databinding.ActivitySalidaBinding
 import com.example.proyectofinal.ui.adapters.SalidaAdapter
+import com.example.proyectofinal.ui.viewmodels.ListaProductoViewModel
 import com.example.proyectofinal.ui.viewmodels.ListaSalidaViewModel
 import com.example.proyectofinal.utils.Preferences
 import com.google.firebase.auth.FirebaseAuth
@@ -24,8 +27,11 @@ class SalidaActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySalidaBinding
     private lateinit var adapter: SalidaAdapter
     private lateinit var database: DatabaseReference
+    private lateinit var databaseProducto: DatabaseReference
+
     private var lista = mutableListOf<Salida>()
     private val viewModel: ListaSalidaViewModel by viewModels()
+    private val viewModelProducto: ListaProductoViewModel by viewModels()
 
     private lateinit var preferences: Preferences
     private lateinit var auth: FirebaseAuth
@@ -41,6 +47,7 @@ class SalidaActivity : AppCompatActivity() {
         }
 
         database = FirebaseDatabase.getInstance().getReference("salidas")
+        databaseProducto = FirebaseDatabase.getInstance().getReference("productos")
         viewModel.salidas.observe(this, { salidas ->
             if (salidas.isNullOrEmpty()) {
                 binding.tvLista.visibility = View.VISIBLE
@@ -86,7 +93,28 @@ class SalidaActivity : AppCompatActivity() {
     }
 
     private fun deleteSalida(item: Salida) {
-        viewModel.deleteSalida(item)
+        val producto = obtenerProducto(item.id_producto)
+        if(producto != null) {
+            val productoEditado = Producto(producto.id, producto.titulo, producto.descripcion, producto.precio, producto.imagen, producto.categoria, producto.cantidad + item.cantidad_producto)
+            databaseProducto.child(productoEditado.id.toString()).setValue(productoEditado).addOnSuccessListener {
+                viewModel.deleteSalida(item)
+            }.addOnFailureListener {
+                Toast.makeText(this, "Error al eliminar la salida", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun obtenerProducto(idProducto: String): Producto? {
+        var producto: Producto? = null
+        viewModelProducto.productos.observe(this) { productos ->
+            for (p in productos) {
+                if (p.id == idProducto.toInt()) {
+                    producto = p
+                    break
+                }
+            }
+        }
+        return producto
     }
 
     private fun setListeners() {
