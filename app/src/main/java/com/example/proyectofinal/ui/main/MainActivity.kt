@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         auth = Firebase.auth
         database = FirebaseDatabase.getInstance().getReference("usuarios")
         preferences = Preferences(this)
+        binding.tvUbicacion.paint.isUnderlineText = true
         setListeners()
     }
 
@@ -48,6 +49,14 @@ class MainActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             login()
         }
+
+        binding.tvUbicacion.setOnClickListener {
+            iniciarActivityMapa()
+        }
+    }
+
+    private fun iniciarActivityMapa() {
+        startActivity(Intent(this, MapaActivity::class.java))
     }
 
     private fun comprobarCampos(): Boolean {

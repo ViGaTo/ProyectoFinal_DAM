@@ -4,7 +4,16 @@
     <string name="hint_email">Introduzca su email...</string>
     <string name="hint_password">Introduzca su contraseña...</string>
     <string name="btn_login">Iniciar sesión</string>
+    <string name="tv_ubicacion">Nuestra ubicación (Google Maps)</string>
     <string name="tv_autor">Hecho por Victoriano García Torrecillas (ViGaTo)</string>
+
+    <string name="btn_proveedores">Proveedores</string>
+    <string name="btn_clientes">Clientes</string>
+    <string name="btn_productos">Productos</string>
+    <string name="btn_entradas">Entradas</string>
+    <string name="btn_salidas">Salidas</string>
+    <string name="btn_empleados">Empleados</string>
+    <string name="btn_usuarios">Usuarios</string>
 
     <string name="btn_portal">Volver al portal</string>
 

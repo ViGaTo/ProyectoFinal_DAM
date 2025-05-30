@@ -40,9 +40,9 @@ android {
 }
 
 dependencies {
-    implementation("me.zhanghai.android.materialratingbar:library:1.4.0")
-    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
-    implementation("com.tom-roush:pdfbox-android:2.0.27.0")
+    implementation(libs.library)
+    implementation(libs.mpandroidchart)
+    implementation(libs.pdfbox.android)
     implementation(libs.retrofit)
     implementation(libs.picasso)
     implementation(libs.converter.gson)
@@ -55,6 +55,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.firebase.auth)
     implementation(libs.play.services.auth)
+    implementation(libs.play.services.maps)
     implementation(libs.firebase.database.ktx)
     implementation(libs.firebase.database)
     testImplementation(libs.junit)

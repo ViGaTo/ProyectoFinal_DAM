@@ -46,15 +46,28 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <View
                 android:id="@+id/espaciador"
                 android:layout_width="0dp"
                 android:layout_height="350dp"
                 android:background="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/espaciador3"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="#5D5D5D"
+                app:layout_constraintBottom_toTopOf="@id/btn_menos_stock"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <Button
                 android:id="@+id/btn_menos_stock"
@@ -115,6 +128,123 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/chart_container" />
 
+        <View
+            android:id="@+id/espaciador4"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:background="#5D5D5D"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_bienvenida" />
+
+        <Button
+            android:id="@+id/btn_proveedores"
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#2196F3"
+            android:text="@string/btn_proveedores"
+            app:icon="@drawable/baseline_fire_truck_24"
+            app:layout_constraintEnd_toStartOf="@+id/btn_clientes"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/espaciador4" />
+
+        <Button
+            android:id="@+id/btn_clientes"
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF9800"
+            android:text="@string/btn_clientes"
+            app:icon="@drawable/baseline_local_grocery_store_24"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_proveedores"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_proveedores"
+            app:layout_constraintTop_toTopOf="@+id/btn_proveedores" />
+
+        <Button
+            android:id="@+id/btn_entradas"
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#4CAF50"
+            android:text="@string/btn_entradas"
+            app:icon="@drawable/baseline_assignment_returned_24"
+            app:layout_constraintEnd_toStartOf="@+id/btn_productos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_proveedores" />
+
+        <Button
+            android:id="@+id/btn_productos"
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#8BC34A"
+            android:text="@string/btn_productos"
+            app:icon="@drawable/baseline_storefront_24"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_entradas"
+            app:layout_constraintEnd_toStartOf="@id/btn_salidas"
+            app:layout_constraintStart_toEndOf="@+id/btn_entradas"
+            app:layout_constraintTop_toTopOf="@+id/btn_entradas" />
+
+        <Button
+            android:id="@+id/btn_salidas"
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#F44336"
+            android:text="@string/btn_salidas"
+            app:icon="@drawable/baseline_assignment_turned_in_24"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_entradas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_productos"
+            app:layout_constraintTop_toTopOf="@+id/btn_entradas" />
+
+        <View
+            android:id="@+id/espaciador2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="#5D5D5D"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_entradas" />
+
+        <Button
+            android:id="@+id/btn_empleados"
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#009688"
+            android:text="@string/btn_empleados"
+            app:icon="@drawable/baseline_work_24"
+            app:layout_constraintEnd_toStartOf="@+id/btn_usuarios"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/espaciador2" />
+
+        <Button
+            android:id="@+id/btn_usuarios"
+            style="@style/Widget.Material3.Button.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#9C27B0"
+            android:text="@string/btn_usuarios"
+            app:icon="@drawable/baseline_people_24"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_empleados"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_empleados"
+            app:layout_constraintTop_toTopOf="@+id/btn_empleados" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <com.google.android.material.navigation.NavigationView

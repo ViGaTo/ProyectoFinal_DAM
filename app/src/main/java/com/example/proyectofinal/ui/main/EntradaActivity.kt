@@ -46,7 +46,6 @@ class EntradaActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         database = FirebaseDatabase.getInstance().getReference("entradas")
         databaseProducto = FirebaseDatabase.getInstance().getReference("productos")
         viewModel.entradas.observe(this, { entradas ->
@@ -59,9 +58,10 @@ class EntradaActivity : AppCompatActivity() {
         })
         auth = FirebaseAuth.getInstance()
         preferences = Preferences(this)
+        obtenerCredenciales()
+
         val menu = binding.menu.menu
         val item = menu.findItem(R.id.item_inventario_entradas)
-
         item?.let {
             it.isChecked = true
             binding.menu.setCheckedItem(it.itemId)
@@ -69,6 +69,14 @@ class EntradaActivity : AppCompatActivity() {
 
         setListeners()
         setRecycler()
+    }
+
+    private fun obtenerCredenciales(){
+        val admin = preferences.isAdmin()
+
+        if(!admin){
+            binding.menu.menu.removeItem(R.id.item_admin)
+        }
     }
 
     private fun obtenerProducto(idProducto: String): Producto? {
@@ -196,6 +204,14 @@ class EntradaActivity : AppCompatActivity() {
                 }
                 R.id.item_inventario_salidas -> {
                     startActivity(Intent(this, SalidaActivity::class.java))
+                    true
+                }
+                R.id.item_documentacion -> {
+                    startActivity(Intent(this, PdfActivity::class.java))
+                    true
+                }
+                R.id.item_video -> {
+                    startActivity(Intent(this, VideoActivity::class.java))
                     true
                 }
                 R.id.item_cerrar_sesion -> {

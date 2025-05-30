@@ -59,6 +59,7 @@ class PortalActivity : AppCompatActivity() {
         databaseProducto = FirebaseDatabase.getInstance().getReference("productos")
         auth = Firebase.auth
         preferences = Preferences(this)
+        obtenerCredenciales()
 
         pieChart = binding.pieChart
         barChart = binding.barChart
@@ -286,6 +287,34 @@ class PortalActivity : AppCompatActivity() {
             cargarMenosStock()
         }
 
+        binding.btnProveedores.setOnClickListener {
+            startActivity(Intent(this, ProveedorActivity::class.java))
+        }
+
+        binding.btnClientes.setOnClickListener {
+            startActivity(Intent(this, ClienteActivity::class.java))
+        }
+
+        binding.btnEntradas.setOnClickListener {
+            startActivity(Intent(this, EntradaActivity::class.java))
+        }
+
+        binding.btnProductos.setOnClickListener {
+            startActivity(Intent(this, ProductoActivity::class.java))
+        }
+
+        binding.btnSalidas.setOnClickListener {
+            startActivity(Intent(this, SalidaActivity::class.java))
+        }
+
+        binding.btnEmpleados.setOnClickListener {
+            startActivity(Intent(this, EmpleadoActivity::class.java))
+        }
+
+        binding.btnUsuarios.setOnClickListener {
+            startActivity(Intent(this, UsuarioActivity::class.java))
+        }
+
         binding.menu.setCheckedItem(R.id.item_inicio)
 
         binding.menu.setNavigationItemSelectedListener {
@@ -332,6 +361,10 @@ class PortalActivity : AppCompatActivity() {
                     startActivity(Intent(this, PdfActivity::class.java))
                     true
                 }
+                R.id.item_video -> {
+                    startActivity(Intent(this, VideoActivity::class.java))
+                    true
+                }
                 R.id.item_salir -> {
                     finish()
                     true
@@ -343,6 +376,17 @@ class PortalActivity : AppCompatActivity() {
 
     private fun obtenerUsuario() {
         binding.tvBienvenida.text = "Bienvenido " +  auth.currentUser?.email.toString()
+    }
+
+    private fun obtenerCredenciales(){
         val admin = preferences.isAdmin()
+
+        if(!admin){
+            binding.btnUsuarios.visibility = View.GONE
+            binding.btnEmpleados.visibility = View.GONE
+            binding.espaciador2.visibility = View.GONE
+
+            binding.menu.menu.removeItem(R.id.item_admin)
+        }
     }
 }

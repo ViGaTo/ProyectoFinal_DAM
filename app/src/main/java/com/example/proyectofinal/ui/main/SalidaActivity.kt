@@ -58,6 +58,8 @@ class SalidaActivity : AppCompatActivity() {
         })
         auth = FirebaseAuth.getInstance()
         preferences = Preferences(this)
+        obtenerCredenciales()
+
         val menu = binding.menu.menu
         val item = menu.findItem(R.id.item_inventario_salidas)
 
@@ -68,6 +70,14 @@ class SalidaActivity : AppCompatActivity() {
 
         setListeners()
         setRecycler()
+    }
+
+    private fun obtenerCredenciales(){
+        val admin = preferences.isAdmin()
+
+        if(!admin){
+            binding.menu.menu.removeItem(R.id.item_admin)
+        }
     }
 
     private fun setRecycler() {
@@ -195,6 +205,14 @@ class SalidaActivity : AppCompatActivity() {
                 }
                 R.id.item_inventario_salidas -> {
                     startActivity(Intent(this, SalidaActivity::class.java))
+                    true
+                }
+                R.id.item_documentacion -> {
+                    startActivity(Intent(this, PdfActivity::class.java))
+                    true
+                }
+                R.id.item_video -> {
+                    startActivity(Intent(this, VideoActivity::class.java))
                     true
                 }
                 R.id.item_cerrar_sesion -> {
