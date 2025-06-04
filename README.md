@@ -43,7 +43,7 @@ Esta es última versión del proyecto, las anteriores versiones se pueden encont
 Este proyecto está bajo licencia gratuita.
 
 ### 🌐 Recursos adicionales 🌐
-Página Principal: <a href="https://github.com/ViGaTo">https://github.com/ViGaTo"</a><br>
+* Página Principal: <a href="https://github.com/ViGaTo">https://github.com/ViGaTo</a><br>
 * Android Studio: <a href="https://developer.android.com/studio">https://developer.android.com/studio</a><br>
 * Firebase: <a href="https://firebase.google.com/">https://firebase.google.com/</a><br>
 * Google Cloud: <a href="https://cloud.google.com/">https://cloud.google.com/</a><br>
