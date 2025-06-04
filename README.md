@@ -4,16 +4,16 @@ Este proyecto consiste en una aplicación de uso empresarial dedicada a una dete
 
 ### 📁 Contenido de la publicación 📁
 1.	Data: Esta carpeta contiene todos los datos de nuestro proyecto.
-      a.	Models: Contiene los modelos de las tablas que nos encargaremos de guardar en nuestra respectiva base de datos (básicamente contiene los datos y los constructores de cada tabla en la aplicación).
-      b.	Providers: Es la carpeta que se encarga de gestionar casi toda la interacción con los datos de nuestra base de datos.
-      i.	API: Se encarga de la gestión de la API Fakestore para poder obtener datos de esa API.
-      ii.	Repository: Interactúa con la base de datos de Firebase para poder añadir, editar, borrar u obtener diferentes tipos de listas de datos.
+      a.	Models: Contiene los modelos de las tablas que nos encargaremos de guardar en nuestra respectiva base de datos (básicamente contiene los datos y los constructores de cada tabla en la aplicación).<br>
+      b.	Providers: Es la carpeta que se encarga de gestionar casi toda la interacción con los datos de nuestra base de datos.<br>
+      i.	API: Se encarga de la gestión de la API Fakestore para poder obtener datos de esa API.<br>
+      ii.	Repository: Interactúa con la base de datos de Firebase para poder añadir, editar, borrar u obtener diferentes tipos de listas de datos.<br>
 
 
-2.	UI: Es la carpeta que se encarga de la gestión de los datos de nuestra carpeta Data para poder mostrarlos o interactuar con ellos haciendo uso de la interfaz y las interacciones de los usuarios.
-      a.	Adapters: Les da funcionalidad y mostrar datos de los elementos de las tablas de datos a sus respectivos layouts.
-      b.	Main: Contienen los activities de nuestra aplicación que son los que hacen que nuestra aplicación pueda funcionar como quiera el desarrollador (es lo principal).
-      c.	ViewModels: Hacen llamadas a las gestiones de la carpeta repository y actualizan a tiempo real (con estas mismas llamadas) los datos mostrados.
+2.	UI: Es la carpeta que se encarga de la gestión de los datos de nuestra carpeta Data para poder mostrarlos o interactuar con ellos haciendo uso de la interfaz y las interacciones de los usuarios.<br>
+      a.	Adapters: Les da funcionalidad y mostrar datos de los elementos de las tablas de datos a sus respectivos layouts.<br>
+      b.	Main: Contienen los activities de nuestra aplicación que son los que hacen que nuestra aplicación pueda funcionar como quiera el desarrollador (es lo principal).<br>
+      c.	ViewModels: Hacen llamadas a las gestiones de la carpeta repository y actualizan a tiempo real (con estas mismas llamadas) los datos mostrados.<br>
 3.	Utils: Son elementos que usamos de ayuda o para evitar usar poner más código del que deberíamos poner.
 4.	Res: Esta carpeta guarda todo lo relacionado a las vistas graficas de nuestra aplicación (por si no se ve en la imagen esta más debajo de donde están el resto de carpetas).
 
