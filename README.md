@@ -43,8 +43,8 @@ Esta es última versión del proyecto, las anteriores versiones se pueden encont
 Este proyecto está bajo licencia gratuita.
 
 ### 🌐 Recursos adicionales 🌐
-Página Principal: <a href="https://github.com/ViGaTo">https://github.com/ViGaTo"</a>
-Android Studio: <a href="https://developer.android.com/studio">https://developer.android.com/studio</a>
-Firebase: <a href="https://firebase.google.com/">https://firebase.google.com/</a>
-Google Cloud: <a href="https://cloud.google.com/">https://cloud.google.com/</a>
-Material Design 3: <a href="https://m3.material.io/">https://m3.material.io/</a>
+Página Principal: <a href="https://github.com/ViGaTo">https://github.com/ViGaTo"</a><br>
+* Android Studio: <a href="https://developer.android.com/studio">https://developer.android.com/studio</a><br>
+* Firebase: <a href="https://firebase.google.com/">https://firebase.google.com/</a><br>
+* Google Cloud: <a href="https://cloud.google.com/">https://cloud.google.com/</a><br>
+* Material Design 3: <a href="https://m3.material.io/">https://m3.material.io/</a><br>
