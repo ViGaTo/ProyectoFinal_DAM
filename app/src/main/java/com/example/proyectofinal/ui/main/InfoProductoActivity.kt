@@ -114,6 +114,8 @@ class InfoProductoActivity : AppCompatActivity() {
     }
 
     private fun datosCorrectos(): Boolean {
+        binding.tlCantidad.isErrorEnabled = false
+
         cantidad = binding.etCantidad.text.toString().toIntOrNull() ?: 0
 
         if (cantidad < 0) {

@@ -32,7 +32,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tl_nombre"
             style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-            android:layout_width="400dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="@string/hint_nombre_empleado"
@@ -55,7 +55,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tl_email"
             style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-            android:layout_width="400dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="@string/hint_email_empleado"
@@ -78,7 +78,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tl_telefono"
             style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="@string/hint_telefono_empleado"
@@ -101,7 +101,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tl_ciudad"
             style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="@string/hint_ciudad_empleado"
@@ -124,7 +124,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tl_fecha_nacimiento"
             style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
             android:hint="@string/hint_fecha_empleado"
@@ -150,7 +150,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tl_puesto"
             style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-            android:layout_width="400dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="@string/hint_puesto_empleado"
@@ -172,7 +172,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tl_salario"
             style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/hint_salario_empleado"
             app:boxBackgroundMode="outline"
@@ -195,7 +195,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tl_fecha_contratacion"
             style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/hint_fecha_contratacion_empleado"
             app:boxBackgroundMode="outline"
@@ -220,7 +220,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tl_fecha_fin"
             style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="@string/hint_fecha_baja_empleado"
@@ -245,7 +245,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tl_notas"
             style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="@string/hint_notas_empleado"

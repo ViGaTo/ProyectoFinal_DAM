@@ -62,7 +62,9 @@ class ListaClienteRepository {
                 val lista = mutableListOf<Cliente>()
                 for (nodo in snapshot.children) {
                     val cliente = nodo.getValue(Cliente::class.java)
-                    if (cliente != null && cliente.nombre.contains(busqueda, ignoreCase = true)) {
+                    if (cliente != null && (cliente.nombre.contains(busqueda, ignoreCase = true)
+                                || cliente.email.contains(busqueda, ignoreCase = true)
+                                || cliente.telefono.contains(busqueda, ignoreCase = true))) {
                         lista.add(cliente)
                     }
                 }

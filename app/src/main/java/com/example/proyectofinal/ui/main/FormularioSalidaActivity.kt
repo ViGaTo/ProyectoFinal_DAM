@@ -267,6 +267,15 @@ class FormularioSalidaActivity : AppCompatActivity() {
     }
 
     private fun datosCorrectos(): Boolean {
+        binding.tlNombre.isErrorEnabled = false
+        binding.tlProductoSalida.isErrorEnabled = false
+        binding.tlCliente.isErrorEnabled = false
+        binding.tlCantidad.isErrorEnabled = false
+        binding.tlPrecio.isErrorEnabled = false
+        binding.tlFechaSalida.isErrorEnabled = false
+        binding.tlHoraSalida.isErrorEnabled = false
+        binding.tlNotas.isErrorEnabled = false
+
         nombre = binding.etNombre.text.toString()
         producto = binding.etProductoSalida.text.toString()
         cliente = binding.etCliente.text.toString()
@@ -276,63 +285,66 @@ class FormularioSalidaActivity : AppCompatActivity() {
         hora_salida = binding.etHoraSalida.text.toString()
         estado = if (binding.cbActivo.isChecked) "Completada" else "Pendiente"
         notas = binding.etNotas.text.toString()
-
-        var productoObtenido = obtenerProductoId(binding.etProductoSalida.text.toString())
-        var item = obtenerProducto(productoObtenido)
-        if(item != null) {
-            if(editando) {
-                var cantidadEditada = item.cantidad + salida.cantidad_producto
-
-                if (cantidadEditada - cantidad_producto < 0) {
-                    binding.tlCantidad.error = "ERROR. El producto no cuenta con suficiente stock."
-                    return false
-                }
-            }else{
-                if (item.cantidad - cantidad_producto < 0) {
-                    binding.tlCantidad.error = "ERROR. El producto no cuenta con suficiente stock."
-                    return false
-                }
-            }
-        }
+        var error = false
 
         if(nombre.length < 3){
             binding.tlNombre.error = "ERROR. El nombre de la salida debe tener al menos 3 caracteres."
-            return false
+            error = true
         }
 
         if(producto.isEmpty()){
             binding.tlProductoSalida.error = "ERROR. El producto no puede estar vacío."
-            return false
+            error = true
+        }else{
+            var productoObtenido = obtenerProductoId(binding.etProductoSalida.text.toString())
+            var item = obtenerProducto(productoObtenido)
+            if(item != null) {
+                if(editando) {
+                    var cantidadEditada = item.cantidad + salida.cantidad_producto
+
+                    if (cantidadEditada - cantidad_producto < 0) {
+                        binding.tlCantidad.error = "ERROR. El producto no cuenta con suficiente stock."
+                        error = true
+                    }
+                }else{
+                    if (item.cantidad - cantidad_producto < 0) {
+                        binding.tlCantidad.error = "ERROR. El producto no cuenta con suficiente stock."
+                        error = true
+                    }
+                }
+            }
         }
 
         if(cliente.isEmpty()){
-            binding.tlCliente.error = "ERROR. El proveedor no puede estar vacío."
-            return false
+            binding.tlCliente.error = "ERROR. El cliente no puede estar vacío."
+            error = true
         }
 
         if(cantidad_producto <= 0){
             binding.tlCantidad.error = "ERROR. La cantidad de producto debe ser superior a cero."
-            return false
+            error = true
         }
 
         if(precio <= 0.0){
             binding.tlPrecio.error = "ERROR. El precio del producto debe ser superior a cero."
-            return false
+            error = true
         }
 
         if(fecha_salida.isEmpty()){
             binding.tlFechaSalida.error = "ERROR. La fecha de salida no puede estar vacía."
-            return false
+            error = true
         }
 
         if(hora_salida.isEmpty()){
             binding.tlHoraSalida.error = "ERROR. La hora de salida no puede estar vacía."
-            return false
+            error = true
         }
 
-
-
-        return true
+        if(error){
+            return false
+        }else{
+            return true
+        }
     }
 
     private fun obtenerProductoId(titulo: String): String {
@@ -514,7 +526,12 @@ class FormularioSalidaActivity : AppCompatActivity() {
             }
 
             binding.etCliente.setOnClickListener{
-                infoCliente(obtenerCliente(salida.email_cliente)!!)
+                val clienteObtenido = obtenerCliente(salida.email_cliente)
+                if (clienteObtenido != null) {
+                    infoCliente(clienteObtenido)
+                } else {
+                    Toast.makeText(this, "ERROR: Cliente no existente", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

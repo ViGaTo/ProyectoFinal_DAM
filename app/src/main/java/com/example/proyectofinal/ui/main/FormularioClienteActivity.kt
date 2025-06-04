@@ -117,6 +117,14 @@ class FormularioClienteActivity : AppCompatActivity() {
     }
 
     private fun datosCorrectos(): Boolean {
+        binding.tlNombre.isErrorEnabled = false
+        binding.tlEmail.isErrorEnabled = false
+        binding.tlTelefono.isErrorEnabled = false
+        binding.tlDireccion.isErrorEnabled = false
+        binding.tlCiudad.isErrorEnabled = false
+        binding.tlFrecuencia.isErrorEnabled = false
+        binding.tlNotas.isErrorEnabled = false
+
         nombre = binding.etNombre.text.toString()
         email = binding.etEmail.text.toString()
         telefono = binding.etTelefono.text.toString()
@@ -124,37 +132,42 @@ class FormularioClienteActivity : AppCompatActivity() {
         ciudad = binding.etCiudad.text.toString()
         frecuencia = binding.etFrecuencia.text.toString()
         notas = binding.etNotas.text.toString()
+        var error = false
 
         if(nombre.length < 3) {
             binding.tlNombre.error = "ERROR. El nombre debe tener al menos tres caracteres"
-            return false
+            error = true
         }
 
         if(telefono.length < 9) {
             binding.tlTelefono.error = "ERROR. El teléfono debe tener al menos nueve dígitos"
-            return false
+            error = true
         }
 
         if(direccion.length < 5) {
             binding.tlDireccion.error = "ERROR. La dirección debe tener al menos cinco caracteres"
-            return false
+            error = true
         }
 
         if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.tlEmail.error = "ERROR. Debe poner un email válido."
-            return false
+            error = true
         }
 
         if(ciudad.length < 3) {
             binding.tlCiudad.error = "ERROR. La ciudad debe tener al menos tres caracteres"
-            return false
+            error = true
         }
 
         if(frecuencia != "Semanal" && frecuencia != "Mensual" && frecuencia != "Anual") {
             binding.tlFrecuencia.error = "ERROR. La frecuencia debe ser Semanal, Mensual o Anual"
-            return false
+            error = true
         }
 
-        return true
+        if(error) {
+            return false
+        }else {
+            return true
+        }
     }
 }

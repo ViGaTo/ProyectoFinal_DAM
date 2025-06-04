@@ -65,16 +65,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_producto" />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentBoton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_nuevo"
-            app:layout_constraintEnd_toStartOf="@+id/btn_nuevo"
-            app:layout_constraintStart_toEndOf="@+id/btn_portal"
-            app:layout_constraintTop_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/btn_nuevo" />
-
         <SearchView
             android:id="@+id/searchView"
             android:layout_width="match_parent"

@@ -62,7 +62,9 @@ class ListaEmpleadoRepository {
                 val lista = mutableListOf<Empleado>()
                 for (nodo in snapshot.children) {
                     val empleado = nodo.getValue(Empleado::class.java)
-                    if (empleado != null && empleado.nombreApellidos.contains(busqueda, true) && empleado.estado == estado) {
+                    if (empleado != null && (empleado.nombreApellidos.contains(busqueda, true)
+                                || empleado.email.contains(busqueda, true))
+                                && empleado.estado == estado) {
                         lista.add(empleado)
                     }
                 }

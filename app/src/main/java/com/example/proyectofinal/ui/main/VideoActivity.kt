@@ -58,10 +58,6 @@ class VideoActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
-        binding.btnPortal.setOnClickListener {
-            finish()
-        }
-
         binding.menu.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.item_inicio -> {

@@ -224,6 +224,17 @@ class FormularioEmpleadoActivity : AppCompatActivity() {
     }
 
     private fun datosCorrectos(): Boolean {
+        binding.tlNombre.isErrorEnabled = false
+        binding.tlEmail.isErrorEnabled = false
+        binding.tlTelefono.isErrorEnabled = false
+        binding.tlCiudad.isErrorEnabled = false
+        binding.tlFechaNacimiento.isErrorEnabled = false
+        binding.tlPuesto.isErrorEnabled = false
+        binding.tlSalario.isErrorEnabled = false
+        binding.tlFechaContratacion.isErrorEnabled = false
+        binding.tlFechaFin.isErrorEnabled = false
+        binding.tlNotas.isErrorEnabled = false
+
         nombre = binding.etNombre.text.toString().trim()
         email = binding.etEmail.text.toString().trim()
         telefono = binding.etTelefono.text.toString().trim()
@@ -231,73 +242,90 @@ class FormularioEmpleadoActivity : AppCompatActivity() {
         fecha_nacimiento = binding.etFechaNacimiento.text.toString().trim()
         estado = if(binding.cbActivo.isChecked) "Activo" else "Inactivo"
         puesto = binding.etPuesto.text.toString().trim()
-        salario = binding.etSalario.text.toString().toFloat()
         fechaContratacion = binding.etFechaContratacion.text.toString().trim()
         fechaFinContrato = binding.etFechaFin.text.toString().trim()
         notas = binding.etNotas.text.toString().trim()
+        var error = false
+
+        if(binding.etSalario.text.toString().trim().isEmpty()) {
+            binding.tlSalario.error = "ERROR. El salario no puede estar vacío."
+            error = true
+        } else {
+            salario = binding.etSalario.text.toString().toFloat()
+            if(salario < 1000 || salario > 10000) {
+                binding.tlSalario.error = "ERROR. El salario debe estar entre 1000 y 10000."
+                error = true
+            }
+        }
 
         if(nombre.length < 9) {
            binding.tlNombre.error = "ERROR. El nombre completo debe tener al menos nueve caracteres."
-            return false
+            error = true
         }
 
         if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.tlEmail.error = "ERROR. Debe poner un email válido."
-            return false
+            error = true
         }
 
         if(telefono.length < 9) {
             binding.tlTelefono.error = "ERROR. El teléfono debe tener al menos nueve digitos."
-            return false
+            error = true
         }
 
         if(ciudad.length < 3) {
             binding.tlCiudad.error = "ERROR. La ciudad debe tener al menos 3 caracteres."
-            return false
+            error = true
         }
 
         if(fecha_nacimiento.isEmpty()) {
             binding.tlFechaNacimiento.error = "ERROR. La fecha de nacimiento no puede estar vacía."
-            return false
+            error = true
         }
 
         if(puesto != "Informático" && puesto != "Gestión" && puesto != "Administrativo" && puesto != "Comercial" && puesto != "Logística") {
             binding.tlPuesto.error = "ERROR. El puesto no es válido."
-            return false
-        }
-
-        if(salario < 1000 || salario > 10000) {
-            binding.tlSalario.error = "ERROR. El salario debe estar entre 1000 y 10000."
-            return false
+            error = true
         }
 
         if(fechaContratacion.isEmpty()) {
             binding.tlFechaContratacion.error = "ERROR. La fecha de contratación no puede estar vacía."
-            return false
+            error = true
         }
 
         if(fechaFinContrato.isEmpty()) {
             binding.tlFechaFin.error = "ERROR. La fecha de fin de contrato no puede estar vacía."
-            return false
+            error = true
         }
 
-        val fechaNacimiento = fecha_nacimiento.split("/").map { it.toInt() }
-        val fechaActual = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
-        val fechaActualSplit = fechaActual.split("/").map { it.toInt() }
-        val edad = fechaActualSplit[2] - fechaNacimiento[2]
-        if (edad < 16 || (edad == 16 && (fechaActualSplit[1] < fechaNacimiento[1] || (fechaActualSplit[1] == fechaNacimiento[1] && fechaActualSplit[0] < fechaNacimiento[0])))) {
-            binding.tlFechaNacimiento.error = "ERROR. Debe tener al menos 16 años."
-            return false
+        if(fechaContratacion.isNotEmpty() && fechaFinContrato.isNotEmpty()) {
+            val fechaInicio = fechaContratacion.split("/").map { it.toInt() }
+            val fechaFinal = fechaFinContrato.split("/").map { it.toInt() }
+            if (fechaFinal[2] < fechaInicio[2] || (fechaFinal[2] == fechaInicio[2] && fechaFinal[1] < fechaInicio[1]) || (fechaFinal[2] == fechaInicio[2] && fechaFinal[1] == fechaInicio[1] && fechaFinal[0] < fechaInicio[0])) {
+                binding.tlFechaContratacion.error = "ERROR. La fecha de fin de contrato no puede ser anterior a la fecha de contratación."
+                error = true
+            }
         }
 
-        val fechaInicio = fechaContratacion.split("/").map { it.toInt() }
-        val fechaFinal = fechaFinContrato.split("/").map { it.toInt() }
-        if (fechaFinal[2] < fechaInicio[2] || (fechaFinal[2] == fechaInicio[2] && fechaFinal[1] < fechaInicio[1]) || (fechaFinal[2] == fechaInicio[2] && fechaFinal[1] == fechaInicio[1] && fechaFinal[0] < fechaInicio[0])) {
-            binding.tlFechaContratacion.error = "ERROR. La fecha de fin de contrato no puede ser anterior a la fecha de contratación."
-            return false
+        if(fecha_nacimiento.isEmpty()) {
+            binding.tlFechaNacimiento.error = "ERROR. La fecha de nacimiento no puede estar vacía."
+            error = true
+        }else {
+            val fechaNacimiento = fecha_nacimiento.split("/").map { it.toInt() }
+            val fechaActual = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
+            val fechaActualSplit = fechaActual.split("/").map { it.toInt() }
+            val edad = fechaActualSplit[2] - fechaNacimiento[2]
+            if (edad < 16 || (edad == 16 && (fechaActualSplit[1] < fechaNacimiento[1] || (fechaActualSplit[1] == fechaNacimiento[1] && fechaActualSplit[0] < fechaNacimiento[0])))) {
+                binding.tlFechaNacimiento.error = "ERROR. Debe tener al menos 16 años."
+                error = true
+            }
         }
 
-        return true
+        if(error) {
+            return false
+        }else {
+            return true
+        }
     }
 
     private fun addItem() {

@@ -3,6 +3,7 @@ package com.example.proyectofinal.ui.main
 import android.content.Intent
 import android.os.Bundle
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,7 @@ import com.example.proyectofinal.R
 import com.example.proyectofinal.data.models.Proveedor
 import com.example.proyectofinal.databinding.ActivityProveedorBinding
 import com.example.proyectofinal.ui.adapters.ProveedorAdapter
+import com.example.proyectofinal.ui.viewmodels.ListaEntradaViewModel
 import com.example.proyectofinal.ui.viewmodels.ListaProveedorViewModel
 import com.example.proyectofinal.utils.Preferences
 import com.google.firebase.auth.FirebaseAuth
@@ -23,6 +25,7 @@ class ProveedorActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProveedorBinding
     private lateinit var adapter: ProveedorAdapter
     private lateinit var database: DatabaseReference
+
     private var lista = mutableListOf<Proveedor>()
     private val viewModel: ListaProveedorViewModel by viewModels()
 

@@ -259,7 +259,12 @@ class FormularioEntradaActivity : AppCompatActivity() {
             }
 
             binding.etProveedor.setOnClickListener{
-                infoProveedor(obtenerProveedor(entrada.email_proveedor)!!)
+                val proveedorItem = obtenerProveedor(entrada.email_proveedor)
+                if(proveedorItem != null) {
+                    infoProveedor(proveedorItem)
+                } else {
+                    Toast.makeText(this, "ERROR: Proveedor no existente", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
@@ -268,6 +273,7 @@ class FormularioEntradaActivity : AppCompatActivity() {
         val bundle = Bundle().apply {
             putSerializable("INFO", item)
         }
+
         irInfoProveedorActivity(bundle)
     }
 
@@ -446,6 +452,15 @@ class FormularioEntradaActivity : AppCompatActivity() {
     }
 
     private fun datosCorrectos(): Boolean {
+        binding.tlNombre.isErrorEnabled = false
+        binding.tlProductoEntrada.isErrorEnabled = false
+        binding.tlProveedor.isErrorEnabled = false
+        binding.tlCantidad.isErrorEnabled = false
+        binding.tlPrecio.isErrorEnabled = false
+        binding.tlFechaEntrada.isErrorEnabled = false
+        binding.tlHoraEntrada.isErrorEnabled = false
+        binding.tlNotas.isErrorEnabled = false
+
         nombre = binding.etNombre.text.toString()
         producto = binding.etProductoEntrada.text.toString()
         proveedor = binding.etProveedor.text.toString()
@@ -455,42 +470,47 @@ class FormularioEntradaActivity : AppCompatActivity() {
         hora_entrada = binding.etHoraEntrada.text.toString()
         estado = if (binding.cbActivo.isChecked) "Completada" else "Pendiente"
         notas = binding.etNotas.text.toString()
+        var error = false
 
         if(nombre.length < 3){
             binding.tlNombre.error = "ERROR. El nombre de la entrada debe tener al menos 3 caracteres."
-            return false
+            error = true
         }
 
         if(producto.isEmpty()){
             binding.tlProductoEntrada.error = "ERROR. El producto no puede estar vacío."
-            return false
+            error = true
         }
 
         if(proveedor.isEmpty()){
             binding.tlProveedor.error = "ERROR. El proveedor no puede estar vacío."
-            return false
+            error = true
         }
 
         if(cantidad_producto <= 0){
             binding.tlCantidad.error = "ERROR. La cantidad de producto debe ser superior a cero."
-            return false
+            error = true
         }
 
         if(precio <= 0.0){
             binding.tlPrecio.error = "ERROR. El precio del producto debe ser superior a cero."
-            return false
+            error = true
         }
 
         if(fecha_entrada.isEmpty()){
             binding.tlFechaEntrada.error = "ERROR. La fecha de entrada no puede estar vacía."
-            return false
+            error = true
         }
 
         if(hora_entrada.isEmpty()){
             binding.tlHoraEntrada.error = "ERROR. La hora de entrada no puede estar vacía."
-            return false
+            error = true
         }
 
-        return true
+        if(error){
+            return false
+        }else {
+            return true
+        }
     }
 }

@@ -63,7 +63,9 @@ class ListaSalidaRepository {
                 val lista = mutableListOf<Salida>()
                 for (nodo in snapshot.children) {
                     val salida = nodo.getValue(Salida::class.java)
-                    if (salida != null && salida.id_producto.contains(busqueda, true) && salida.estado == estado) {
+                    if (salida != null && (salida.nombre.contains(busqueda, true)
+                                || salida.fecha_salida.contains(busqueda, true))
+                                && salida.estado == estado) {
                         lista.add(salida)
                     }
                 }

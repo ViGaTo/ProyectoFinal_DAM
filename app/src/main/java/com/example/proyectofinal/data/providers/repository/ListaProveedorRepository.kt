@@ -42,7 +42,9 @@ class ListaProveedorRepository {
                 val lista = mutableListOf<Proveedor>()
                 for (nodo in snapshot.children) {
                     val proveedor = nodo.getValue(Proveedor::class.java)
-                    if (proveedor != null && proveedor.nombre.contains(busqueda, ignoreCase = true)) {
+                    if (proveedor != null && (proveedor.nombre.contains(busqueda, ignoreCase = true)
+                                  || proveedor.email.contains(busqueda, ignoreCase = true)
+                                  || proveedor.telefono.contains(busqueda, ignoreCase = true))) {
                         lista.add(proveedor)
                     }
                 }

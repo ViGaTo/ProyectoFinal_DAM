@@ -108,6 +108,13 @@ class FormularioProveedorActivity : AppCompatActivity() {
     }
 
     private fun datosCorrectos(): Boolean {
+        binding.tlNombre.isErrorEnabled = false
+        binding.tlTelefono.isErrorEnabled = false
+        binding.tlDireccion.isErrorEnabled = false
+        binding.tlEmail.isErrorEnabled = false
+        binding.tlCiudad.isErrorEnabled = false
+        binding.tlNotas.isErrorEnabled = false
+
         nombre = binding.etNombre.text.toString().trim()
         telefono = binding.etTelefono.text.toString().trim()
         direccion = binding.etDireccion.text.toString().trim()
@@ -116,32 +123,37 @@ class FormularioProveedorActivity : AppCompatActivity() {
         calificacion = binding.rbCalificacion.rating
         estado = if(binding.cbActivo.isChecked) "Activo" else "Inactivo"
         notas = binding.etNotas.text.toString().trim()
+        var error = false
 
         if(nombre.length < 3) {
             binding.tlNombre.error = "ERROR. El nombre debe tener al menos tres caracteres"
-            return false
+            error = true
         }
 
         if(telefono.length < 9) {
             binding.tlTelefono.error = "ERROR. El teléfono debe tener al menos nueve dígitos"
-            return false
+            error = true
         }
 
         if(direccion.length < 5) {
             binding.tlDireccion.error = "ERROR. La dirección debe tener al menos cinco caracteres"
-            return false
+            error = true
         }
 
         if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.tlEmail.error = "ERROR. Debe poner un email válido."
-            return false
+            error = true
         }
 
         if(ciudad.length < 3) {
             binding.tlCiudad.error = "ERROR. La ciudad debe tener al menos tres caracteres"
-            return false
+            error = true
         }
 
-        return true
+        if(error){
+            return false
+        }else {
+            return true
+        }
     }
 }

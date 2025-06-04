@@ -43,7 +43,6 @@ class PortalActivity : AppCompatActivity() {
     private lateinit var barChart: BarChart
     private lateinit var pieChart: PieChart
 
-    private var usuario = ""
     private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,8 +77,6 @@ class PortalActivity : AppCompatActivity() {
             .limitToFirst(5)
             .get()
             .addOnSuccessListener { snapshot ->
-                Log.d("Graficas", "snapshot size = ${snapshot.childrenCount}")
-
                 val entradas = mutableListOf<BarEntry>()
                 val etiquetas  = mutableListOf<String>()
                 var i = 0f
@@ -107,8 +104,6 @@ class PortalActivity : AppCompatActivity() {
             .limitToLast(5)
             .get()
             .addOnSuccessListener { snapshot ->
-                Log.d("Graficas", "snapshot size = ${snapshot.childrenCount}")
-
                 val entradas = mutableListOf<BarEntry>()
                 val etiquetas  = mutableListOf<String>()
                 var i = 0f
@@ -313,6 +308,10 @@ class PortalActivity : AppCompatActivity() {
 
         binding.btnUsuarios.setOnClickListener {
             startActivity(Intent(this, UsuarioActivity::class.java))
+        }
+
+        binding.btnAyuda.setOnClickListener {
+            startActivity(Intent(this, PdfActivity::class.java))
         }
 
         binding.menu.setCheckedItem(R.id.item_inicio)

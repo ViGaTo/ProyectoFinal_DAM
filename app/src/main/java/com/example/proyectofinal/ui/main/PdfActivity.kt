@@ -60,11 +60,10 @@ class PdfActivity : AppCompatActivity() {
 
         auth = Firebase.auth
         preferences = Preferences(this)
-        obtenerCredenciales()
 
         iniciarElementos()
         setListeners()
-        cargarPDF(R.raw.guia_usuario)
+        obtenerCredenciales()
 
         val menu = binding.menu.menu
         val item = menu.findItem(R.id.item_documentacion)
@@ -79,6 +78,9 @@ class PdfActivity : AppCompatActivity() {
 
         if(!admin){
             binding.menu.menu.removeItem(R.id.item_admin)
+            cargarPDF(R.raw.guia_usuario)
+        }else{
+            cargarPDF(R.raw.guia_admin)
         }
     }
 

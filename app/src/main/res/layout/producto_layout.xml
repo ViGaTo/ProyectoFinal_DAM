@@ -13,7 +13,7 @@
         android:id="@+id/layout_producto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/fondo"
+        android:background="@color/fondo_layout"
         android:padding="10dp">
 
         <TextView

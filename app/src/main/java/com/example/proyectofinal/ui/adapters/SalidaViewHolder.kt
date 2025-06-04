@@ -10,7 +10,7 @@ class SalidaViewHolder(v: View) : RecyclerView.ViewHolder(v) {
 
     fun render(salida: Salida, deleteSalida: (Salida) -> Unit, updateSalida: (Salida) -> Unit, infoSalida: (Salida) -> Unit
     ) {
-        binding.tvNombre.text = salida.nombre + " " + salida.precio
+        binding.tvNombre.text = salida.nombre + " " + salida.precio + "€"
         binding.tvFecha.text = salida.fecha_salida + " - " + salida.hora_salida
 
         binding.btnDelete.setOnClickListener {

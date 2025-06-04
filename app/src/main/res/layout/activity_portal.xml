@@ -7,6 +7,15 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.PortalActivity">
 
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/fondo"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
@@ -62,19 +71,19 @@
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="30dp"
                 android:background="#5D5D5D"
-                app:layout_constraintBottom_toTopOf="@id/btn_menos_stock"
-                android:layout_marginBottom="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/espaciador" />
 
             <Button
                 android:id="@+id/btn_menos_stock"
                 style="?attr/materialIconButtonFilledStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="10dp"
                 android:backgroundTint="#F44336"
@@ -84,7 +93,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/btn_categorias"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/espaciador" />
+                app:layout_constraintTop_toTopOf="@+id/espaciador3" />
 
             <Button
                 android:id="@+id/btn_categorias"
@@ -246,7 +255,22 @@
             app:layout_constraintStart_toEndOf="@+id/btn_empleados"
             app:layout_constraintTop_toTopOf="@+id/btn_empleados" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_ayuda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            app:backgroundTint="#DCD6D6"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_usuarios"
+            app:srcCompat="@android:drawable/ic_menu_help" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/menu"
         android:layout_width="wrap_content"

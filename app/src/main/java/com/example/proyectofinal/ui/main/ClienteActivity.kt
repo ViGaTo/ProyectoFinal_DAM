@@ -3,6 +3,7 @@ package com.example.proyectofinal.ui.main
 import android.content.Intent
 import android.os.Bundle
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,7 @@ import com.example.proyectofinal.databinding.ActivityClienteBinding
 import com.example.proyectofinal.ui.adapters.ClienteAdapter
 import com.example.proyectofinal.ui.adapters.ProveedorAdapter
 import com.example.proyectofinal.ui.viewmodels.ListaClienteViewModel
+import com.example.proyectofinal.ui.viewmodels.ListaSalidaViewModel
 import com.example.proyectofinal.utils.Preferences
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -25,6 +27,7 @@ class ClienteActivity : AppCompatActivity() {
     private lateinit var adapter: ClienteAdapter
     private lateinit var database: DatabaseReference
     private var lista = mutableListOf<Cliente>()
+
     private val viewModel: ListaClienteViewModel by viewModels()
 
     private lateinit var preferences: Preferences

@@ -60,23 +60,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun comprobarCampos(): Boolean {
+        binding.tlEmail.isErrorEnabled = false
+        binding.tlPassword.isErrorEnabled = false
+
         email = binding.etEmail.text.toString().trim()
         contrasena = binding.etPassword.text.toString().trim()
+        var error = false
 
         if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             binding.tlEmail.error="ERROR. Debe poner un email válido."
-            return false
-        }else{
-            binding.tlEmail.error = null
+            error = true
         }
 
         if(contrasena.length < 8){
             binding.tlPassword.error="ERROR. La contraseña debe tener al menos ocho caracteres"
-            return false
-        }else{
-            binding.tlPassword.error = null
+            error = true
         }
-        return true
+
+        if(error){
+            return false
+        }else {
+            return true
+        }
     }
 
     private fun login() {
@@ -88,7 +93,7 @@ class MainActivity : AppCompatActivity() {
                     database.child(email.encodeEmail()).get().addOnSuccessListener {
                         if (it.exists()) {
                             if(it.child(("activado")).value == false){
-                                Toast.makeText(this, "Usuario desactivado", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "ERROR: Usuario desactivado", Toast.LENGTH_SHORT).show()
                             }else{
                                 isAdmin = it.child("admin").value as Boolean
                                 preferences.setAdmin(isAdmin)
@@ -100,7 +105,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             .addOnFailureListener {
-                Toast.makeText(this, it.message.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "ERROR: El usuario o la contraseña son incorrectos", Toast.LENGTH_SHORT).show()
             }
     }
 

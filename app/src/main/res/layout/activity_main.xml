@@ -23,7 +23,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tl_email"
         style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-        android:layout_width="350dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="@string/hint_email"
@@ -46,7 +46,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tl_password"
         style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
-        android:layout_width="350dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:hint="@string/hint_password"
