@@ -3,11 +3,11 @@
 Este proyecto consiste en una aplicación de uso empresarial dedicada a una determinada empresa, esta aplicación la realizo para demostrar los conocimientos que he adquirido en este ciclo formativo (DAM), para ello juntare lo que hemos hecho en todas las asignaturas y las fusionare para hacer una aplicación móvil que se encargue de la gestión de una empresa, usando de referencia los proyectos que hemos estado usando en las asignaturas de este año y de mi proyecto anterior (que en vez de una aplicación, fue una web para la gestión de una empresa), creare una aplicación para el mismo propósito.
 
 ### 📁 Contenido de la publicación 📁
-1.	Data: Esta carpeta contiene todos los datos de nuestro proyecto.
+1.	Data: Esta carpeta contiene todos los datos de nuestro proyecto.<br>
       a.	Models: Contiene los modelos de las tablas que nos encargaremos de guardar en nuestra respectiva base de datos (básicamente contiene los datos y los constructores de cada tabla en la aplicación).<br>
       b.	Providers: Es la carpeta que se encarga de gestionar casi toda la interacción con los datos de nuestra base de datos.<br>
-      i.	API: Se encarga de la gestión de la API Fakestore para poder obtener datos de esa API.<br>
-      ii.	Repository: Interactúa con la base de datos de Firebase para poder añadir, editar, borrar u obtener diferentes tipos de listas de datos.<br>
+      * i.	API: Se encarga de la gestión de la API Fakestore para poder obtener datos de esa API.<br>
+      * ii.	Repository: Interactúa con la base de datos de Firebase para poder añadir, editar, borrar u obtener diferentes tipos de listas de datos.<br>
 
 
 2.	UI: Es la carpeta que se encarga de la gestión de los datos de nuestra carpeta Data para poder mostrarlos o interactuar con ellos haciendo uso de la interfaz y las interacciones de los usuarios.<br>
