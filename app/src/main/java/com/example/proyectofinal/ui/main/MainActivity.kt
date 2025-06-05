@@ -117,9 +117,19 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         val usuario = auth.currentUser
         if(usuario!=null){
-            isAdmin = preferences.isAdmin()
-
-            iniciarActivityPortal()
+            usuario.email?.let {
+                database.child(it.encodeEmail()).get().addOnSuccessListener {
+                    if (it.exists()) {
+                        if(it.child(("activado")).value == false){
+                            Toast.makeText(this, "ERROR: Usuario desactivado", Toast.LENGTH_SHORT).show()
+                        }else{
+                            isAdmin = it.child("admin").value as Boolean
+                            preferences.setAdmin(isAdmin)
+                            iniciarActivityPortal()
+                        }
+                    }
+                }
+            }
         }
     }
 }
