@@ -234,6 +234,19 @@ class FormularioSalidaActivity : AppCompatActivity() {
                         if(productoEditar != null) {
                             var cantidadEditada = productoEditar.cantidad + salida.cantidad_producto
 
+                            if(salida.id_producto != producto) {
+                                val productoAnterior = obtenerProducto(salida.id_producto)
+                                if(productoAnterior != null) {
+                                    var cantidadAnterior = productoAnterior.cantidad + salida.cantidad_producto
+                                    if(cantidadAnterior < 0) {
+                                        cantidadAnterior = 0
+                                    }
+                                    val itemProductoAnterior = Producto(productoAnterior.id, productoAnterior.titulo, productoAnterior.descripcion, productoAnterior.precio, productoAnterior.imagen, productoAnterior.categoria, cantidadAnterior)
+                                    databaseProducto.child(salida.id_producto).setValue(itemProductoAnterior)
+                                    cantidadEditada = productoEditar.cantidad
+                                }
+                            }
+
                             val itemProducto = Producto(productoEditar.id, productoEditar.titulo, productoEditar.descripcion, productoEditar.precio, productoEditar.imagen, productoEditar.categoria, cantidadEditada - cantidad_producto)
                             databaseProducto.child(producto).setValue(itemProducto).addOnSuccessListener {
                                 finish()
